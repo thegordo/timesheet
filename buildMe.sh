@@ -8,5 +8,5 @@ echo "Done removing the current deployment"
 mvn
 
 echo "Deploying the new war file"
-cp target/timeSheet.war /opt/tomcat/webapps
+cp target/*.war /opt/tomcat/webapps
 echo "Deployed the war file.  We are a go!"

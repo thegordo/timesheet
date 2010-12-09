@@ -13,6 +13,10 @@ div.login {
 	width:35%;
 }
 
+div.menu {
+    text-align:right;
+}
+
 label {
     font-weight:bold;
     float:left;
