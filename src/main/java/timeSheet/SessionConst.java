@@ -7,4 +7,5 @@ package timeSheet;
  */
 public enum SessionConst {
     userName,
+    employee,
 }

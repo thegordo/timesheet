@@ -3,6 +3,9 @@
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="PaySystem.war">
       <element id="artifact" artifact-name="timeSheet:war exploded" />
+      <element id="library" level="project" name="Maven: org.hibernate.java-persistence:jpa-api:2.0-cr-1" />
+      <element id="library" level="project" name="Maven: com.h2database:h2:1.3.148" />
+      <element id="library" level="project" name="Maven: org.eclipse.persistence:eclipselink:2.0.1" />
     </root>
   </artifact>
 </component>

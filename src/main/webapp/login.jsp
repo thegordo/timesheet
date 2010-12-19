@@ -1,4 +1,6 @@
 <%@ page import="timeSheet.SessionConst" %>
+<%@ page import="timeSheet.database.entity.Employee" %>
+<%@ page import="timeSheet.database.manager.DatabaseManager" %>
 <%--
   User: John Lawrence
   Date: Dec 5, 2010
@@ -10,10 +12,15 @@
 	out.println("Checking login<br>");
 	if (username == null || password == null) {
 		out.print("Invalid parameters ");
-	} else if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("admin")) {
-		session.setAttribute(SessionConst.userName.toString(), username);
-		out.println("<script type=\"text/javascript\">window.location.replace(\"dashboard.jsp\");</script>");
 	} else {
-		out.println("Invalid username and password");
-	}
+        DatabaseManager manager = new DatabaseManager();
+        Employee employee = manager.getEmployee(username);
+        if (employee.getPassword().equals(password)) {
+            session.setAttribute(SessionConst.userName.toString(), username);
+            session.setAttribute(SessionConst.employee.toString(), employee);
+            out.println("<script type=\"text/javascript\">window.location.replace(\"dashboard.jsp\");</script>");
+        } else {
+            out.println("Invalid username and password");
+        }
+    }
 %>
