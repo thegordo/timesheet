@@ -1,5 +1,7 @@
 package timeSheet;
 
+import timeSheet.database.manager.DatabaseManager;
+
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
@@ -35,5 +37,16 @@ public class UtilWeb {
 
     public static String getMenu() {
         return "<div class=\"menu\"><a href=\"dashboard.jsp\">Dashboard</a>&nbsp;|&nbsp;<a href=\"logout.jsp\">Logout</a></div>";
+    }
+
+    public static void checkInstall(JspWriter out) {
+        DatabaseManager manager = new DatabaseManager();
+        if (!manager.testConnection()) {
+            try {
+                out.println("<script type=\"text/javascript\">window.location.replace(\"install/index.jsp\");</script>");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
