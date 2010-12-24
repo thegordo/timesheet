@@ -6,6 +6,7 @@ package timeSheet.database.entity;
  * Time: 1:01 AM
  */
 public enum GroupRole {
+    Administrator,
     Executive,
     Manager,
     AssistantManager,

@@ -2,10 +2,14 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
     <persistence-unit name="PaySystem" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
         <class>timeSheet.database.entity.Employee</class>
         <class>timeSheet.database.entity.Group</class>
         <class>timeSheet.database.entity.HourType</class>
         <class>timeSheet.database.entity.Setting</class>
+        <class>timeSheet.database.entity.BaseObject</class>
+        <properties>
+            <property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
+        </properties>
     </persistence-unit>
 </persistence>

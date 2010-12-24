@@ -26,7 +26,12 @@
     <br/>
 
     <div class="login">
-        <label for="DBName">Database Name:</label><input class="field" type="text" id="DBName" name="DBName"/><br/>
+        <label for="h2">H2</label><input class="field" type="radio" name="dbType" value="H2" id="h2" checked="true" onclick="hideName()"/><br/>
+        <label for="mysql">MySQL</label><input class="field" type="radio" name="dbType" value="MySQL" id="mysql" onclick="hideName()"/><br />
+    </div>
+
+    <div class="login" id="mySqlChoice"></div>
+    <div class="login">
         <label for="DBUserName">Database user name:</label><input class="field" type="text" id="DBUserName" name="DBUserName"/><br/>
         <label for="DBPassword">Database password:</label><input class="field" type="password" id="DBPassword" name="DBPassword"/><br/>
     </div>

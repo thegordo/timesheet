@@ -1,8 +1,7 @@
 package timeSheet.database.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,10 +14,13 @@ public class Group extends BaseObject {
     @Column(length = 256)
     public String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "group")
     List<Employee> employeeList;
 
     public List<Employee> getEmployeeList() {
+        if(employeeList == null) {
+            employeeList = new ArrayList<Employee>();
+        }
         return employeeList;
     }
 
@@ -32,5 +34,9 @@ public class Group extends BaseObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addEmployee(Employee emp) {
+        getEmployeeList().add(emp);
     }
 }

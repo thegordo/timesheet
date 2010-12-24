@@ -1,16 +1,16 @@
 package timeSheet.database.manager;
 
+import timeSheet.database.entity.BaseObject;
 import timeSheet.database.entity.Employee;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
+import static org.apache.openjpa.persistence.JPAProperties.*;
 
 /**
  * User: John Lawrence
@@ -23,8 +23,8 @@ public class DatabaseManager {
     public DatabaseManager() {
     }
 
-    public void connect() {
-        HashMap<String, String> properties = getProperties(true);
+    public void connect(boolean create) {
+        HashMap<String, String> properties = getProperties(create);
 
         // TODO: Set this up so that the user can change databases and database urls
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("PaySystem", properties);
@@ -51,14 +51,27 @@ public class DatabaseManager {
 
     private HashMap<String, String> getProperties(boolean create) {
         HashMap<String, String> properties = new HashMap<String, String>();
-        properties.put(JDBC_URL, "jdbc:h2:tcp://localhost/~/timeSheet");
+        if (create) {
+            properties.put(JDBC_URL, "jdbc:h2:tcp://localhost/~/timeSheet");
+        } else {
+            properties.put(JDBC_URL, "jdbc:h2:tcp://localhost/~/timeSheet;IFEXISTS=TRUE");
+        }
         properties.put(JDBC_USER, "");
         properties.put(JDBC_PASSWORD, "");
         properties.put(JDBC_DRIVER, "org.h2.Driver");
-        if (create) {
-            properties.put(DDL_GENERATION, CREATE_ONLY);
-            properties.put(DDL_GENERATION_MODE, DDL_BOTH_GENERATION);
-        }
         return properties;
+    }
+
+    public <T extends BaseObject> T persist(T object) {
+        T returnVal = null;
+        try {
+            em.getTransaction().begin();
+            returnVal = em.merge(object);
+            em.persist(returnVal);
+            em.getTransaction().commit();
+        } catch (PersistenceException e) {
+            Logger.getLogger("Manager").log(Level.SEVERE, e.getMessage(), e);
+        }
+        return returnVal;
     }
 }

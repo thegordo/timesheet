@@ -7,13 +7,13 @@ function doLogin() {
 	txtUserName.value = "";
 	txtPassword.value = "";
 
-	request.open("POST","library/login.php?userName=" + userName + "&password=" + password, true);
+	request.open("POST","library/login.jsp?userName=" + userName + "&password=" + password, true);
 	request.onreadystatechange = function() {
 		if(request.readyState == 4 ) {
 			if(request.status == 200) {
 				var response = request.responseText;
 				if(response == "valid") {
-					location.assign("dashboard.php");
+					location.assign("dashboard.jsp");
 				} else {
 					alert("Login Error! \n" + response);
 				}
@@ -26,11 +26,15 @@ function doLogin() {
 }
 
 function doInstall() {
-	var databaseName = document.getElementById("DBName").value;
+	var databaseName = null;
+    if (document.getElementById("mysql").selected == 1) {
+        databaseName = document.getElementById("DBName").value;
+    }
 	var databaseUserName = document.getElementById("DBUserName").value;
 	var databasePassword = document.getElementById("DBPassword").value;
 	var pass1 =  document.getElementById("adminPassword").value;
 	var pass2 =  document.getElementById("adminPassword2").value;
+    var type = document.getElementById("mysql").selected;
 	if(pass1 != pass2) {
 		alert("Passwords do not match!");
 		return;
@@ -41,8 +45,13 @@ function doInstall() {
 	}
 
 	var request = new XMLHttpRequest();
-	var url = "installDatabase.php";
-	var parameters = "dbName="+databaseName+"&dbUserName=" + databaseUserName + "&dbPassword=" + databasePassword + "&password=" + pass1;
+	var url = "installDatabase.jsp";
+    var parameters;
+    if (databaseName != null) {
+        parameters = "dbName=" + databaseName + "&dbUserName=" + databaseUserName + "&dbPassword=" + databasePassword + "&password=" + pass1 + "&type=" + type;
+    } else {
+        parameters = "dbUserName=" + databaseUserName + "&dbPassword=" + databasePassword + "&password=" + pass1 + "&type="+type;
+    }
 	request.open("POST", url, true);
 
 	//Send the proper header information along with the request
@@ -55,9 +64,9 @@ function doInstall() {
 			if(request.status == 200) {
 			document.body.style.cursor = "default";
 				if(request.responseText == "success") {
-					window.location = "installed.php";
+					window.location = "../index.jsp";
 				} else {
-					window.location = "failure.php?error=" + request.responseText;
+					window.location = "failure.jsp?error=" + request.responseText;
 				}
 			} else {
 				alert("Install has failed. Please delete the MySQL database tables and try again.\n" + request.responseText);
@@ -249,4 +258,13 @@ function approveTime(id, all) {
         document.location = "library/saveApproval.php?empid=" + id + "&manager=false"
     }
 
+}
+
+function hideName() {
+    var dbNameText = "<label for='DBName'>Database Name:</label> <input class = 'field' type = 'text' id = 'DBName' name = 'DBName' /> <br/>";
+    if (document.getElementById("mysql").checked == 1) {
+        document.getElementById("mySqlChoice").innerHTML = dbNameText;
+    } else {
+        document.getElementById("mySqlChoice").innerHTML = "";
+    }
 }

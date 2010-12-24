@@ -31,7 +31,7 @@ public class Employee extends BaseObject {
     @Temporal(TemporalType.DATE)
     private Date fullTimeDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Group group;
 
     @Enumerated(EnumType.STRING)
