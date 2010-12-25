@@ -19,6 +19,8 @@ import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
  * Time: 1:03 AM
  */
 public class DatabaseManager {
+    private String TCP_CONNECTION_STRING = "jdbc:h2:tcp://localhost";
+    private String EMBEDDED_CONNECTION_STRING = "jdbc:h2:";
     private EntityManager em;
     private boolean isConnected;
 
@@ -58,11 +60,11 @@ public class DatabaseManager {
     private HashMap<String, String> getProperties(boolean create) {
         HashMap<String, String> properties = new HashMap<String, String>();
         if (create) {
-            properties.put(JDBC_URL, "jdbc:h2:~/timeSheet");
+            properties.put(JDBC_URL, TCP_CONNECTION_STRING + "/~/timeSheet");
             properties.put(DDL_GENERATION, CREATE_ONLY);
             properties.put(DDL_GENERATION_MODE, DDL_BOTH_GENERATION);
         } else {
-            properties.put(JDBC_URL, "jdbc:h2:~/timeSheet;IFEXISTS=TRUE");
+            properties.put(JDBC_URL, TCP_CONNECTION_STRING + "/~/timeSheet;IFEXISTS=TRUE");
         }
         properties.put(JDBC_USER, "");
         properties.put(JDBC_PASSWORD, "");

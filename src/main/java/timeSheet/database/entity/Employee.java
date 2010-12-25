@@ -35,6 +35,7 @@ public class Employee extends BaseObject {
     private EmployeeGroup group;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 256)
     private GroupRole role;
 
     @Column
@@ -48,9 +49,6 @@ public class Employee extends BaseObject {
 
     @Column
     private Boolean activeFlag;
-
-    @Column
-    private Boolean isAdmin;
 
     public String getName() {
         return name;
@@ -156,11 +154,7 @@ public class Employee extends BaseObject {
         this.activeFlag = activeFlag;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
+    public boolean isAdmin() {
+        return role == GroupRole.Administrator;
     }
 }
