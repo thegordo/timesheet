@@ -1,5 +1,5 @@
 <%@ page import="timeSheet.database.entity.Employee" %>
-<%@ page import="timeSheet.database.entity.Group" %>
+<%@ page import="timeSheet.database.entity.EmployeeGroup" %>
 <%@ page import="timeSheet.database.entity.GroupRole" %>
 <%@ page import="timeSheet.database.manager.DatabaseManager" %>
 <%@ page import="timeSheet.util.SHA" %>
@@ -17,7 +17,7 @@
     DatabaseManager manager = new DatabaseManager();
     manager.connect(true);
 
-    Group adminGroup = new Group();
+    EmployeeGroup adminGroup = new EmployeeGroup();
     adminGroup.setName("admin");
 
     Employee emp = new Employee();

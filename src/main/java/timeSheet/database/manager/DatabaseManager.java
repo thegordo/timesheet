@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static org.apache.openjpa.persistence.JPAProperties.*;
+import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
+
 
 /**
  * User: John Lawrence
@@ -19,6 +20,7 @@ import static org.apache.openjpa.persistence.JPAProperties.*;
  */
 public class DatabaseManager {
     private EntityManager em;
+    private boolean isConnected;
 
     public DatabaseManager() {
     }
@@ -29,13 +31,14 @@ public class DatabaseManager {
         // TODO: Set this up so that the user can change databases and database urls
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("PaySystem", properties);
         em = factory.createEntityManager();
+        isConnected = true;
     }
 
     public boolean testConnection() {
-        HashMap<String, String> properties = getProperties(true);
+        HashMap<String, String> properties = getProperties(false);
         try {
             Class.forName(properties.get(JDBC_DRIVER));
-            Connection conn = DriverManager.getConnection(properties.get(JDBC_URL) + ";IFEXISTS=TRUE");
+            Connection conn = DriverManager.getConnection(properties.get(JDBC_URL));
             conn.close(); // Database exists.
             return true;
         } catch (Exception e) {
@@ -44,6 +47,9 @@ public class DatabaseManager {
     }
 
     public Employee getEmployee(String userName) {
+        if (!isConnected) {
+            connect(false);
+        }
         TypedQuery<Employee> query = em.createQuery("Select c from Employee c where upper(c.userName) = upper(:userName)", Employee.class);
         query.setParameter("userName", userName);
         return query.getSingleResult();
@@ -52,9 +58,11 @@ public class DatabaseManager {
     private HashMap<String, String> getProperties(boolean create) {
         HashMap<String, String> properties = new HashMap<String, String>();
         if (create) {
-            properties.put(JDBC_URL, "jdbc:h2:tcp://localhost/~/timeSheet");
+            properties.put(JDBC_URL, "jdbc:h2:~/timeSheet");
+            properties.put(DDL_GENERATION, CREATE_ONLY);
+            properties.put(DDL_GENERATION_MODE, DDL_BOTH_GENERATION);
         } else {
-            properties.put(JDBC_URL, "jdbc:h2:tcp://localhost/~/timeSheet;IFEXISTS=TRUE");
+            properties.put(JDBC_URL, "jdbc:h2:~/timeSheet;IFEXISTS=TRUE");
         }
         properties.put(JDBC_USER, "");
         properties.put(JDBC_PASSWORD, "");

@@ -32,7 +32,7 @@ public class Employee extends BaseObject {
     private Date fullTimeDate;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Group group;
+    private EmployeeGroup group;
 
     @Enumerated(EnumType.STRING)
     private GroupRole role;
@@ -108,11 +108,11 @@ public class Employee extends BaseObject {
         this.fullTimeDate = fullTimeDate;
     }
 
-    public Group getGroup() {
+    public EmployeeGroup getGroup() {
         return group;
     }
 
-    public void setGroup(Group group) {
+    public void setGroup(EmployeeGroup group) {
         this.group = group;
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
  * Time: 1:06 AM
  */
 @Entity
-public class Group extends BaseObject {
+public class EmployeeGroup extends BaseObject {
     @Column(length = 256)
     public String name;
 
