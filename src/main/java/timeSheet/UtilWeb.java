@@ -13,14 +13,14 @@ import java.io.IOException;
  */
 public class UtilWeb {
     public static void checkSession(HttpSession session, JspWriter out, boolean isIndex) {
-        String userName = (String) session.getAttribute(SessionConst.userName.toString());
-        if (userName == null && !isIndex) {
+        Object sessionCheck = session.getAttribute(SessionConst.employee.toString());
+        if (sessionCheck == null && !isIndex) {
             try {
                 out.println("<script type=\"text/javascript\">window.location.replace(\"index.jsp\");</script>");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (userName != null && isIndex) {
+        } else if (sessionCheck != null && isIndex) {
             try {
                 out.println("<script type=\"text/javascript\">window.location.replace(\"dashboard.jsp\");</script>");
             } catch (IOException e) {

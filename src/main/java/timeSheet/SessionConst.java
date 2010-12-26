@@ -6,6 +6,5 @@ package timeSheet;
  * Time: 12:23 AM
  */
 public enum SessionConst {
-    userName,
     employee,
 }

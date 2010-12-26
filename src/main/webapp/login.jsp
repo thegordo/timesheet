@@ -19,7 +19,6 @@
         DatabaseManager manager = new DatabaseManager();
         Employee employee = manager.getEmployee(username);
         if (employee.getPassword().equals(password)) {
-            session.setAttribute(SessionConst.userName.toString(), username);
             session.setAttribute(SessionConst.employee.toString(), employee);
             out.println("<script type=\"text/javascript\">window.location.replace(\"dashboard.jsp\");</script>");
         } else {
