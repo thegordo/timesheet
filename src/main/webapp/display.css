@@ -73,3 +73,83 @@ br {
 textarea.field {
     float: right;
 }
+
+table.install {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding: 0;
+    border: 0;
+}
+
+table.report {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0;
+    border: 0;
+}
+
+td.install {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    height: 25px;
+}
+
+td.clear {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 150px;
+    height: 25px;
+}
+
+td.value {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+    height: 25px;
+}
+
+td.action {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 10%;
+    height: 25px;
+}
+
+th.report {
+    border: 0;
+    padding: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 1px;
+    border: 5px solid;
+}
+
+td {
+    border: 0;
+    width: 100px;
+    height: 50px;
+}
+
+td.hourTable {
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    vertical-align: text-top;
+}
+
+td.total {
+    background-color: #999999;
+}

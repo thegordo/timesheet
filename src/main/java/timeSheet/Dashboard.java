@@ -17,26 +17,24 @@ public class Dashboard {
     }
 
     public String getMenu() {
-        String menu = "";
+        StringBuilder sortedMenu = new StringBuilder();
         Employee currentEmployee = (Employee) session.getAttribute(SessionConst.employee.toString());
         switch (currentEmployee.getRole()) {
             case Administrator:
-                menu += "<a href=\"manageGroups.jsp\">Manage Groups</a><br />";
-                menu += "<a href=\"manageEmployees.jsp\">Manage Employees</a><br />";
-                menu += "<a href=\"manageSettings.jsp\">Manage Settings</a><br />";
+                sortedMenu.append("<a href=\"manageGroups.jsp\">Manage Groups</a><br />");
+                sortedMenu.append("<a href=\"manageEmployees.jsp\">Manage Employees</a><br />");
+                sortedMenu.append("<a href=\"manageSettings.jsp\">Manage Settings</a><br />");
             case Executive:
-                menu += "<a href=\"reports/reports.jsp\">Reports</a><br />";
+                sortedMenu.append("<a href=\"reports/reports.jsp\">Reports</a><br />");
             case Manager:
             case AssistantManager:
             case TimeSheetApproval:
-                menu += "<a href=\"manageTime.jsp\">Manage Time</a><br />";
+                sortedMenu.append("<a href=\"manageTime.jsp\">Manage Time</a><br />");
             case Employee:
-                menu += "<a href=\"timeEntering.jsp\">Enter Time</a><br />";
-                menu += "<a href=\"manageUser.jsp\">Manage Account</a><br />";
-
+                sortedMenu.append("<a href=\"timeEntering.jsp\">Enter Time</a><br />");
+                sortedMenu.append("<a href=\"manageUser.jsp\">Manage Account</a><br />");
         }
-
-        return menu;
+        return sortedMenu.toString();
     }
 
     public String getName() {

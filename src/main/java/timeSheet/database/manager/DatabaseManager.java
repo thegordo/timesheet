@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,12 +50,16 @@ public class DatabaseManager {
     }
 
     public Employee getEmployee(String userName) {
-        if (!isConnected) {
-            connect(false);
-        }
+        ensureConnection();
         TypedQuery<Employee> query = em.createQuery("Select c from Employee c where upper(c.userName) = upper(:userName)", Employee.class);
         query.setParameter("userName", userName);
         return query.getSingleResult();
+    }
+
+    private void ensureConnection() {
+        if (!isConnected) {
+            connect(false);
+        }
     }
 
     private HashMap<String, String> getProperties(boolean create) {
@@ -83,5 +88,10 @@ public class DatabaseManager {
             Logger.getLogger("Manager").log(Level.SEVERE, e.getMessage(), e);
         }
         return returnVal;
+    }
+
+    public List<Employee> getEmployeeList() {
+        ensureConnection();
+        return em.createQuery("Select c from Employee c", Employee.class).getResultList();
     }
 }

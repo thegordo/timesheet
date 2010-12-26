@@ -24,7 +24,6 @@
     emp.setUserName("admin");
     emp.setName("Admin");
     emp.setActiveFlag(true);
-    emp.setAdmin(true);
     emp.setHireDate(Calendar.getInstance().getTime());
     emp.setEmailAddress("");
     emp.setPassword(new SHA(request.getParameter("password")).toString());

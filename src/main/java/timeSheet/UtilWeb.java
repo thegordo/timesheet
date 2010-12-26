@@ -2,6 +2,7 @@ package timeSheet;
 
 import timeSheet.database.manager.DatabaseManager;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
@@ -35,7 +36,10 @@ public class UtilWeb {
                 "\t\t</div>";
     }
 
-    public static String getMenu() {
+    public static String getMenu(HttpServletRequest response) {
+        if (response.getRequestURI().contains("library")) {
+            return "<div class=\"menu\"><a href=\"../dashboard.jsp\">Dashboard</a>&nbsp;|&nbsp;<a href=\"logout.jsp\">Logout</a></div>";
+        }
         return "<div class=\"menu\"><a href=\"dashboard.jsp\">Dashboard</a>&nbsp;|&nbsp;<a href=\"logout.jsp\">Logout</a></div>";
     }
 
