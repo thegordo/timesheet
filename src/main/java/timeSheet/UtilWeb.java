@@ -32,7 +32,7 @@ public class UtilWeb {
 
     public static String getFooter() {
         return "<div id=\"footer\">\n" +
-                "\t\t\t<h6><br />&copy; 2010 by John Lawrence. <br/>Licensed under the <a href=\"http://www.gnu.org/licenses/gpl.html\" taget=\"blank\">GPLv3</a></h6>\n" +
+                "\t\t\t<h6><br />&copy; 2010 by John Lawrence. <br/>Licensed under the <a target=\"_blank\" href=\"http://www.gnu.org/licenses/gpl.html\">GPLv3</a></h6>\n" +
                 "\t\t</div>";
     }
 
