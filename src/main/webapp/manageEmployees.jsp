@@ -39,7 +39,7 @@
     </table>
 </div>
 <div class="login">
-    <button onclick="location = library/editEmployee.jsp">Add</button>
+    <a href="library/editEmployee.jsp">Add</a>
 </div>
 <% out.println(UtilWeb.getFooter());%>
 </body>
