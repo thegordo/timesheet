@@ -1,6 +1,6 @@
-<%@ page import="timeSheet.EmployeeManager" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.entity.Employee" %>
+<%@ page import="timeSheet.dbManager.EmployeeManager" %>
 <%@ page import="java.util.List" %>
 <%--
   User: John LAwrence
@@ -30,7 +30,7 @@
         %>
         <tr>
             <td class="value"><%=emp.getName()%></td>
-            <td class="action"><a href=<%="library/editEmployee.jsp?empid=" + emp.getId()%>>Edit</a></td>
+            <td class="action"><a href=<%="editEmployee.jsp?empid=" + emp.getId()%>>Edit</a></td>
             <td class="action"><a href=<%="library/deleteEmployee.jsp?empid=" + emp.getId()%>>Delete</a></td>
         </tr>
         <%
@@ -39,7 +39,7 @@
     </table>
 </div>
 <div class="login">
-    <a href="library/editEmployee.jsp">Add</a>
+    <a href="editEmployee.jsp">Add</a>
 </div>
 <% out.println(UtilWeb.getFooter());%>
 </body>

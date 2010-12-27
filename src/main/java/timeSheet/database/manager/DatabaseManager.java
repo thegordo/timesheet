@@ -2,6 +2,7 @@ package timeSheet.database.manager;
 
 import timeSheet.database.entity.BaseObject;
 import timeSheet.database.entity.Employee;
+import timeSheet.database.entity.EmployeeGroup;
 
 import javax.persistence.*;
 import java.sql.Connection;
@@ -53,7 +54,22 @@ public class DatabaseManager {
         ensureConnection();
         TypedQuery<Employee> query = em.createQuery("Select c from Employee c where upper(c.userName) = upper(:userName)", Employee.class);
         query.setParameter("userName", userName);
-        return query.getSingleResult();
+        try {
+            return query.getSingleResult();
+        } catch (EntityNotFoundException e) {
+            return null;
+        }
+    }
+
+    public Employee getEmployee(int id) {
+        ensureConnection();
+        TypedQuery<Employee> query = em.createQuery("Select c from Employee c where c.id = :id", Employee.class);
+        query.setParameter("id", id);
+        try {
+            return query.getSingleResult();
+        } catch (EntityNotFoundException e) {
+            return null;
+        }
     }
 
     private void ensureConnection() {
@@ -93,5 +109,11 @@ public class DatabaseManager {
     public List<Employee> getEmployeeList() {
         ensureConnection();
         return em.createQuery("Select c from Employee c", Employee.class).getResultList();
+    }
+
+    public List<EmployeeGroup> getGroupList() {
+        ensureConnection();
+        TypedQuery<EmployeeGroup> query =  em.createQuery("select c from EmployeeGroup c", EmployeeGroup.class);
+        return query.getResultList();
     }
 }

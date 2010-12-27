@@ -39,9 +39,6 @@ public class Employee extends BaseObject {
     private GroupRole role;
 
     @Column
-    private Double wage;
-
-    @Column
     private Boolean ptoAllowed;
 
     @Column
@@ -120,14 +117,6 @@ public class Employee extends BaseObject {
 
     public void setRole(GroupRole role) {
         this.role = role;
-    }
-
-    public Double getWage() {
-        return wage;
-    }
-
-    public void setWage(Double wage) {
-        this.wage = wage;
     }
 
     public Boolean getPtoAllowed() {

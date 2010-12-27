@@ -1,4 +1,4 @@
-package timeSheet;
+package timeSheet.dbManager;
 
 import timeSheet.database.entity.Employee;
 import timeSheet.database.manager.DatabaseManager;
@@ -21,5 +21,10 @@ public class EmployeeManager {
     public List<Employee> getEmployeeList() {
         DatabaseManager manager = new DatabaseManager();
         return manager.getEmployeeList();
+    }
+
+    public Employee getEmployee(int id) {
+        DatabaseManager manager = new DatabaseManager();
+        return manager.getEmployee(id);
     }
 }
