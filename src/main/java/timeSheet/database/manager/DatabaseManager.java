@@ -2,7 +2,6 @@ package timeSheet.database.manager;
 
 import timeSheet.database.entity.BaseObject;
 import timeSheet.database.entity.Employee;
-import timeSheet.database.entity.EmployeeGroup;
 
 import javax.persistence.*;
 import java.sql.Connection;
@@ -94,6 +93,7 @@ public class DatabaseManager {
     }
 
     public <T extends BaseObject> T persist(T object) {
+        ensureConnection();
         T returnVal = null;
         try {
             em.getTransaction().begin();
@@ -111,9 +111,28 @@ public class DatabaseManager {
         return em.createQuery("Select c from Employee c", Employee.class).getResultList();
     }
 
-    public List<EmployeeGroup> getGroupList() {
+    public EntityManager getEntityManager() {
         ensureConnection();
-        TypedQuery<EmployeeGroup> query =  em.createQuery("select c from EmployeeGroup c", EmployeeGroup.class);
-        return query.getResultList();
+        return em;
+    }
+
+    public <T> T getSingleResult(TypedQuery<T> query) {
+        List<T> list = query.getResultList();
+        if (list.size() > 0) {
+            return list.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public void delete(Object object) {
+        try {
+            em.getTransaction().begin();
+            em.remove(object);
+            em.getTransaction().commit();
+        } catch (PersistenceException e) {
+            Logger.getLogger("Manager").log(Level.SEVERE, e.getMessage(), e);
+            throw e;
+        }
     }
 }

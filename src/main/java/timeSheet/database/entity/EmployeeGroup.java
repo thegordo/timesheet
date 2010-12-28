@@ -10,8 +10,9 @@ import java.util.List;
  * Time: 1:06 AM
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "name"))
 public class EmployeeGroup extends BaseObject {
-    @Column(length = 256)
+    @Column(length = 256, unique = true)
     public String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "group")
