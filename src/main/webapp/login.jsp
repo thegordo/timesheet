@@ -1,6 +1,6 @@
 <%@ page import="timeSheet.SessionConst" %>
 <%@ page import="timeSheet.database.entity.Employee" %>
-<%@ page import="timeSheet.database.manager.DatabaseManager" %>
+<%@ page import="timeSheet.dbManager.EmployeeManager" %>
 <%@ page import="timeSheet.util.SHA" %>
 <%@ page import="java.util.logging.Logger" %>
 <%--
@@ -16,7 +16,7 @@
 	if (username == null || password == null) {
 		out.print("Invalid parameters ");
 	} else {
-        DatabaseManager manager = new DatabaseManager();
+        EmployeeManager manager = new EmployeeManager();
         Employee employee = manager.getEmployee(username);
         if (employee.getPassword().equals(password)) {
             session.setAttribute(SessionConst.employee.toString(), employee);

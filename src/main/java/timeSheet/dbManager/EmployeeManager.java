@@ -3,7 +3,8 @@ package timeSheet.dbManager;
 import timeSheet.database.entity.Employee;
 import timeSheet.database.manager.DatabaseManager;
 
-import javax.servlet.http.HttpSession;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
@@ -12,19 +13,27 @@ import java.util.List;
  * Time: 10:29 PM
  */
 public class EmployeeManager {
-    private HttpSession session;
+    private DatabaseManager manager;
+    private EntityManager em;
 
-    public EmployeeManager(HttpSession session) {
-        this.session = session;
+    public EmployeeManager() {
+        manager = new DatabaseManager();
+        em = manager.getEntityManager();
     }
 
     public List<Employee> getEmployeeList() {
-        DatabaseManager manager = new DatabaseManager();
-        return manager.getEmployeeList();
+        return em.createQuery("Select c from Employee c", Employee.class).getResultList();
+    }
+
+    public Employee getEmployee(String userName) {
+        TypedQuery<Employee> query = em.createQuery("Select c from Employee c where upper(c.userName) = upper(:userName)", Employee.class);
+        query.setParameter("userName", userName);
+        return manager.getSingleResult(query);
     }
 
     public Employee getEmployee(int id) {
-        DatabaseManager manager = new DatabaseManager();
-        return manager.getEmployee(id);
+        TypedQuery<Employee> query = em.createQuery("Select c from Employee c where c.id = :id", Employee.class);
+        query.setParameter("id", id);
+        return manager.getSingleResult(query);
     }
 }

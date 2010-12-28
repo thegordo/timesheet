@@ -15,7 +15,7 @@
 <html>
 <head>
     <% UtilWeb.checkSession(session, out, false); %>
-    <% EmployeeManager employeeManager = new EmployeeManager(session); %>
+    <% EmployeeManager employeeManager = new EmployeeManager(); %>
     <%
         String empID = request.getParameter("empid");
         Employee employee = null;

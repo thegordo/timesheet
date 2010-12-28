@@ -1,7 +1,6 @@
 package timeSheet.database.manager;
 
 import timeSheet.database.entity.BaseObject;
-import timeSheet.database.entity.Employee;
 
 import javax.persistence.*;
 import java.sql.Connection;
@@ -49,28 +48,6 @@ public class DatabaseManager {
         }
     }
 
-    public Employee getEmployee(String userName) {
-        ensureConnection();
-        TypedQuery<Employee> query = em.createQuery("Select c from Employee c where upper(c.userName) = upper(:userName)", Employee.class);
-        query.setParameter("userName", userName);
-        try {
-            return query.getSingleResult();
-        } catch (EntityNotFoundException e) {
-            return null;
-        }
-    }
-
-    public Employee getEmployee(int id) {
-        ensureConnection();
-        TypedQuery<Employee> query = em.createQuery("Select c from Employee c where c.id = :id", Employee.class);
-        query.setParameter("id", id);
-        try {
-            return query.getSingleResult();
-        } catch (EntityNotFoundException e) {
-            return null;
-        }
-    }
-
     private void ensureConnection() {
         if (!isConnected) {
             connect(false);
@@ -92,6 +69,8 @@ public class DatabaseManager {
         return properties;
     }
 
+
+
     public <T extends BaseObject> T persist(T object) {
         ensureConnection();
         T returnVal = null;
@@ -104,11 +83,6 @@ public class DatabaseManager {
             Logger.getLogger("Manager").log(Level.SEVERE, e.getMessage(), e);
         }
         return returnVal;
-    }
-
-    public List<Employee> getEmployeeList() {
-        ensureConnection();
-        return em.createQuery("Select c from Employee c", Employee.class).getResultList();
     }
 
     public EntityManager getEntityManager() {
