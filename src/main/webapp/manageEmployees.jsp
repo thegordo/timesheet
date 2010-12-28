@@ -12,7 +12,7 @@
 <head>
     <% UtilWeb.checkSession(session, out, false); %>
     <% EmployeeManager employeeManager = new EmployeeManager(session); %>
-    <title>PaySystem - Dashboard</title>
+    <title>PaySystem - Manage Groups</title>
     <style type="text/css">
         @import url('display.css');
     </style>

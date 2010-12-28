@@ -16,7 +16,16 @@
 <head>
     <% UtilWeb.checkSession(session, out, false); %>
     <% EmployeeManager employeeManager = new EmployeeManager(session); %>
-    <title>PaySystem - Dashboard</title>
+    <%
+        String empID = request.getParameter("empid");
+        Employee employee = null;
+        if (empID != null) {
+            employee = employeeManager.getEmployee(Integer.valueOf(empID));
+        }
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String title = employee != null ? "Edit " + employee.getName() : "Add Employee";
+    %>
+    <title>PaySystem - <%=title%></title>
     <style type="text/css">
         @import url("display.css");
         @import url("calendar.css");
@@ -27,15 +36,8 @@
 <body>
 <% out.println(UtilWeb.getMenu(request));%>
 <h1>Fishbowl Pay System</h1>
-<h2>Edit Employee</h2>
-    <%
-        String empID = request.getParameter("empid");
-        Employee employee = null;
-        if (empID != null) {
-            employee = employeeManager.getEmployee(Integer.valueOf(empID));
-        }
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    %>
+<h2><%=title%></h2>
+
     <form action="library/newEmployee.jsp" method="post" name="employee">
         <div class="login">
             <label for="name">Name:</label>
