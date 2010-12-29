@@ -36,4 +36,12 @@ public class EmployeeManager {
         query.setParameter("id", id);
         return manager.getSingleResult(query);
     }
+
+    public void deleteEmployee(int id) {
+        manager.delete(getEmployee(id));
+    }
+
+    public Employee saveEmployee(Employee employee) {
+        return manager.persist(employee);
+    }
 }

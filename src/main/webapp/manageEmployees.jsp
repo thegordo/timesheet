@@ -30,8 +30,8 @@
         %>
         <tr>
             <td class="value"><%=emp.getName()%></td>
-            <td class="action"><a href=<%="editEmployee.jsp?empid=" + emp.getId()%>>Edit</a></td>
-            <td class="action"><a href=<%="library/deleteEmployee.jsp?empid=" + emp.getId()%>>Delete</a></td>
+            <td class="action"><a href=<%="editEmployee.jsp?"+Employee.Field.id+ "=" + emp.getId()%>>Edit</a></td>
+            <td class="action"><a href=<%="library/deleteEmployee.jsp?"+Employee.Field.id+ "=" + emp.getId()%>>Delete</a></td>
         </tr>
         <%
             }

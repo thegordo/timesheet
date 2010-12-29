@@ -146,4 +146,22 @@ public class Employee extends BaseObject {
     public boolean isAdmin() {
         return role == GroupRole.Administrator;
     }
+
+
+    public enum Field {
+        id,
+        name,
+        dateHired,
+        fullTimeDate,
+        group,
+        role,
+        userName,
+        pass1,
+        pass2,
+        email,
+        fileNum,
+        active,
+        ptoAllowed,
+        salaried,
+    }
 }
