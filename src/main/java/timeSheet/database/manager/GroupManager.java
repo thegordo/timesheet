@@ -1,8 +1,7 @@
-package timeSheet.dbManager;
+package timeSheet.database.manager;
 
 import timeSheet.database.entity.Employee;
 import timeSheet.database.entity.EmployeeGroup;
-import timeSheet.database.manager.DatabaseManager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

@@ -1,6 +1,6 @@
 <%@ page import="timeSheet.SessionConst" %>
 <%@ page import="timeSheet.database.entity.Employee" %>
-<%@ page import="timeSheet.dbManager.EmployeeManager" %>
+<%@ page import="timeSheet.database.manager.EmployeeManager" %>
 <%@ page import="timeSheet.util.SHA" %>
 <%@ page import="java.util.logging.Logger" %>
 <%--

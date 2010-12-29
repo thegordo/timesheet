@@ -1,8 +1,8 @@
 <%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.entity.Employee" %>
 <%@ page import="timeSheet.database.entity.GroupRole" %>
-<%@ page import="timeSheet.dbManager.EmployeeManager" %>
-<%@ page import="timeSheet.dbManager.GroupManager" %>
+<%@ page import="timeSheet.database.manager.EmployeeManager" %>
+<%@ page import="timeSheet.database.manager.GroupManager" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%--
   Created by IntelliJ IDEA.

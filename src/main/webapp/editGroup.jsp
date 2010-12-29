@@ -1,6 +1,6 @@
 <%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.entity.EmployeeGroup" %>
-<%@ page import="timeSheet.dbManager.GroupManager" %>
+<%@ page import="timeSheet.database.manager.GroupManager" %>
 <%--
   User: John Lawrence
   Date: 12/27/10

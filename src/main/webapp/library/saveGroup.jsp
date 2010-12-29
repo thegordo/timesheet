@@ -1,5 +1,5 @@
 <%@ page import="timeSheet.database.entity.EmployeeGroup" %>
-<%@ page import="timeSheet.dbManager.GroupManager" %>
+<%@ page import="timeSheet.database.manager.GroupManager" %>
 <%@ page import="javax.persistence.PersistenceException" %>
 <%--
   User: John Lawrence
