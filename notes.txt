@@ -1,10 +1,8 @@
 Things left todo:
+-Add in the HourType setup stuff
 -Change DB Structure to allow for multiple groups per employee.
--Create the manage groups page.
--Create the edit/add/delete group pages.
--Create the edit/add/delete Employee pages.
 -Change install to be able to specify the Title of the company
--Change the install to be able specify database details1
+-Change the install to be able specify database details
 -Change the install to be able to specify the first users user name.
 
 
