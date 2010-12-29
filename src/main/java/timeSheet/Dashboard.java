@@ -18,6 +18,9 @@ public class Dashboard {
 
     public String getMenu() {
         StringBuilder sortedMenu = new StringBuilder();
+        if (session.getAttribute(SessionConst.employee.toString()) == null) {
+            return "";
+        }
         Employee currentEmployee = (Employee) session.getAttribute(SessionConst.employee.toString());
         switch (currentEmployee.getRole()) {
             case Administrator:
@@ -38,6 +41,10 @@ public class Dashboard {
     }
 
     public String getName() {
-        return ((Employee)session.getAttribute(SessionConst.employee.toString())).getName();
+        Object attribute = session.getAttribute(SessionConst.employee.toString());
+        if (attribute != null) {
+            return ((Employee) attribute).getName();
+        }
+        return "";
     }
 }
