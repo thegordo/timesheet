@@ -2,6 +2,8 @@ package timeSheet.database.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * User: John Lawrence
@@ -9,6 +11,11 @@ import javax.persistence.Entity;
  * Time: 1:34 AM
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name= "findAll", query = "SELECT ht FROM HourType ht"),
+        @NamedQuery(name = "findByName",query = "SELECT C from HourType C where UPPER(C.name) = UPPER(:name)"),
+        @NamedQuery(name = "findById",query = "SELECT C from HourType C where C.id = :id")
+})
 public class HourType extends BaseObject {
     @Column(length = 256)
     public String name;
@@ -41,5 +48,12 @@ public class HourType extends BaseObject {
 
     public void setDefaultFlag(Boolean defaultFlag) {
         this.defaultFlag = defaultFlag;
+    }
+
+    public enum Field {
+        id,
+        name,
+        paid,
+        defaultFlag,
     }
 }

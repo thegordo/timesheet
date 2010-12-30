@@ -27,6 +27,7 @@ public class Dashboard {
                 sortedMenu.append("<a href=\"manageGroups.jsp\">Manage Groups</a><br />");
                 sortedMenu.append("<a href=\"manageEmployees.jsp\">Manage Employees</a><br />");
                 sortedMenu.append("<a href=\"manageSettings.jsp\">Manage Settings</a><br />");
+                sortedMenu.append("<a href=\"manageHourTypes.jsp\">Manage Hour Types</a><br />");
             case Executive:
                 sortedMenu.append("<a href=\"reports/reports.jsp\">Reports</a><br />");
             case Manager:

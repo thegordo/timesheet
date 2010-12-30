@@ -61,6 +61,10 @@ input.calendarField {
     width: 140px;
 }
 
+input.submit {
+    float: none;
+}
+
 select.field {
     float: right;
     width: 158px;

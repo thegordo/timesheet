@@ -13,6 +13,7 @@ import java.io.IOException;
  * Time: 11:42 PM
  */
 public class UtilWeb {
+    // TODO: Add in whether or not this supposed to be an admin only page.
     public static void checkSession(HttpSession session, JspWriter out, boolean isIndex) {
         Object sessionCheck = session.getAttribute(SessionConst.employee.toString());
         if (sessionCheck == null && !isIndex) {
