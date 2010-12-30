@@ -22,7 +22,7 @@
         if (empID != null) {
             employee = employeeManager.getEmployee(Integer.valueOf(empID));
         }
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = UtilWeb.getDateFormat();
         String title = employee != null ? "Edit " + employee.getName() : "Add Employee";
     %>
     <title>PaySystem - <%=title%></title>

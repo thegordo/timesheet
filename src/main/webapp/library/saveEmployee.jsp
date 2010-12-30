@@ -1,3 +1,4 @@
+<%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.entity.Employee" %>
 <%@ page import="timeSheet.database.entity.GroupRole" %>
 <%@ page import="timeSheet.database.manager.EmployeeManager" %>
@@ -12,7 +13,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat dateFormat = UtilWeb.getDateFormat();
     EmployeeManager manager = new EmployeeManager();
     Employee employee = new Employee();
     int id = Integer.parseInt(request.getParameter(Employee.Field.id.toString()));

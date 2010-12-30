@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 /**
  * User: John Lawrence
@@ -13,6 +14,8 @@ import java.io.IOException;
  * Time: 11:42 PM
  */
 public class UtilWeb {
+    private static SimpleDateFormat simpleDateFormat;
+
     // TODO: Add in whether or not this supposed to be an admin only page.
     public static void checkSession(HttpSession session, JspWriter out, boolean isIndex) {
         Object sessionCheck = session.getAttribute(SessionConst.employee.toString());
@@ -53,5 +56,12 @@ public class UtilWeb {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static SimpleDateFormat getDateFormat() {
+        if (simpleDateFormat == null) {
+            simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        }
+        return simpleDateFormat;
     }
 }
