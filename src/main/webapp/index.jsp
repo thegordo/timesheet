@@ -23,7 +23,7 @@
 				<label for="password">Password:</label>
 				<input type="password" class="input" name="password" id="password" >
 				<br /><br />
-				<input type="submit" value="Login">
+				<input class="submit" type="submit" value="Login">
 			</form>
 		</div>
 		<div id="footer">
