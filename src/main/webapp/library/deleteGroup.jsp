@@ -1,3 +1,4 @@
+<%@ page import="timeSheet.database.entity.EmployeeGroup" %>
 <%@ page import="timeSheet.database.manager.GroupManager" %>
 <%@ page import="javax.persistence.PersistenceException" %>
 <%--
@@ -9,8 +10,10 @@
 <%
     GroupManager manager = new GroupManager();
     try {
-        manager.deleteGroup(Integer.parseInt(request.getParameter("groupId")));
-        out.println("<script type=\"text/javascript\">window.location.replace(\"../manageGroups.jsp\");</script>");
+        manager.deleteGroup(Integer.parseInt(request.getParameter(EmployeeGroup.Field.id.toString())));
+%>
+        <script type="text/javascript">window.location.replace("../manageGroups.jsp");</script>
+<%
     } catch (PersistenceException e) {
         out.println(e.getMessage());
     }

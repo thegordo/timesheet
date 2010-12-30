@@ -13,7 +13,7 @@
         UtilWeb.checkSession(session, out, false);
         HourTypeManager groupManager = new HourTypeManager();
 
-        String hourTypeId = request.getParameter("groupId");
+        String hourTypeId = request.getParameter(HourType.Field.id.toString());
         HourType hourType = null;
         if (hourTypeId != null) {
             hourType = groupManager.getType(Integer.valueOf(hourTypeId));

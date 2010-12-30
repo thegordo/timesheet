@@ -10,7 +10,11 @@ import java.util.List;
  * Time: 1:06 AM
  */
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "name"))
+@NamedQueries({
+        @NamedQuery(name = "findAllGroups", query = "SELECT c FROM EmployeeGroup c"),
+        @NamedQuery(name = "findGroupsById", query = "SELECT c FROM EmployeeGroup c WHERE c.id = :id"),
+        @NamedQuery(name = "findGroupsByName", query = "SELECT c FROM EmployeeGroup c WHERE UPPER(c.name) = UPPER(:name)")
+})
 public class EmployeeGroup extends BaseObject {
     @Column(length = 256, unique = true)
     public String name;
@@ -39,5 +43,10 @@ public class EmployeeGroup extends BaseObject {
 
     public void addEmployee(Employee emp) {
         getEmployeeList().add(emp);
+    }
+
+    public enum Field {
+        id,
+        name,
     }
 }

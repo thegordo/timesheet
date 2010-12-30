@@ -35,18 +35,18 @@ public class GroupManager {
     }
 
     public List<EmployeeGroup> getGroupList() {
-        TypedQuery<EmployeeGroup> query = em.createQuery("Select eg from EmployeeGroup eg", EmployeeGroup.class);
+        TypedQuery<EmployeeGroup> query = em.createNamedQuery("findAllGroups", EmployeeGroup.class);
         return query.getResultList();
     }
 
     public EmployeeGroup getGroup(Integer id) {
-        TypedQuery<EmployeeGroup> query = em.createQuery("select c from EmployeeGroup c where c.id = :id", EmployeeGroup.class);
+        TypedQuery<EmployeeGroup> query = em.createNamedQuery("findGroupsById", EmployeeGroup.class);
         query.setParameter("id", id);
         return manager.getSingleResult(query);
     }
 
     public EmployeeGroup getGroup(String name) {
-        TypedQuery<EmployeeGroup> query = em.createQuery("select c from EmployeeGroup c where c.name = :name", EmployeeGroup.class);
+        TypedQuery<EmployeeGroup> query = em.createNamedQuery("findGroupsByName", EmployeeGroup.class);
         query.setParameter("name", name);
         return manager.getSingleResult(query);
     }

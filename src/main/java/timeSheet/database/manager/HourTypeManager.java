@@ -21,18 +21,18 @@ public class HourTypeManager {
     }
 
     public List<HourType> getList() {
-        TypedQuery<HourType> query = em.createNamedQuery("findAll", HourType.class);
+        TypedQuery<HourType> query = em.createNamedQuery("findAllTypes", HourType.class);
         return query.getResultList();
     }
 
     public HourType getType(int id) {
-        TypedQuery<HourType> query = em.createNamedQuery("findById", HourType.class);
+        TypedQuery<HourType> query = em.createNamedQuery("findTypeById", HourType.class);
         query.setParameter("id", id);
         return manager.getSingleResult(query);
     }
 
     public HourType getType(String name) {
-        TypedQuery<HourType> query = em.createNamedQuery("findByName", HourType.class);
+        TypedQuery<HourType> query = em.createNamedQuery("findTypeByName", HourType.class);
         query.setParameter("name", name);
         return manager.getSingleResult(query);
     }

@@ -29,10 +29,9 @@
             for (EmployeeGroup group : groupList) {
         %>
         <tr>
-            <td class="value"><%=group.getName()%>
-            </td>
-            <td class="action"><a href=<%="editGroup.jsp?groupId=" + group.getId()%>>Edit</a></td>
-            <td class="action"><a href=<%="library/deleteGroup.jsp?groupId=" + group.getId()%>>Delete</a></td>
+            <td class="value"><%=group.getName()%></td>
+            <td class="action"><a href="editGroup.jsp?<%=EmployeeGroup.Field.id%>=<%=group.getId()%>">Edit</a></td>
+            <td class="action"><a href="library/deleteGroup.jsp?<%=EmployeeGroup.Field.id%>=<%=group.getId()%>">Delete</a></td>
         </tr>
         <%
             }

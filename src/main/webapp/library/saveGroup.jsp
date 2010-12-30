@@ -9,8 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     EmployeeGroup group = new EmployeeGroup();
-    group.setName(request.getParameter("name"));
-    int id = Integer.parseInt(request.getParameter("id"));
+    group.setName(request.getParameter(EmployeeGroup.Field.name.toString()));
+    int id = Integer.parseInt(request.getParameter(EmployeeGroup.Field.id.toString()));
     if (id > 0) {
         group.setId(id);
     }
@@ -20,7 +20,9 @@
         if (group == null) {
             out.println("Group already exists!");
         }
-        out.println("<script type=\"text/javascript\">window.location.replace(\"../manageGroups.jsp\");</script>");
+%>
+        <script type="text/javascript">window.location.replace("../manageGroups.jsp");</script>
+<%
     } catch (PersistenceException e) {
         out.println(e.getMessage());
     }

@@ -13,7 +13,7 @@
        UtilWeb.checkSession(session, out, false);
        GroupManager groupManager = new GroupManager();
 
-        String groupID = request.getParameter("groupId");
+        String groupID = request.getParameter(EmployeeGroup.Field.id.toString());
         EmployeeGroup group = null;
         if (groupID != null) {
             group = groupManager.getGroup(Integer.valueOf(groupID));
