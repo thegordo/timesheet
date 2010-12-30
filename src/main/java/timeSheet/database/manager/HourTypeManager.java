@@ -39,7 +39,7 @@ public class HourTypeManager {
 
     public HourType saveType(HourType type) {
         HourType existing = getType(type.getName());
-        if (existing == null) {
+        if (existing == null || existing.getId() == type.getId()) {
             return manager.persist(type);
         } else {
             return null;

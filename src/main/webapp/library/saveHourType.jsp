@@ -19,7 +19,9 @@
 
     try {
         manager.saveType(type);
-        %><script type="text/javascript">window.location.replace("../manageHourTypes.jsp")</script><%
+        %>
+            <script type="text/javascript">window.location.replace("../manageHourTypes.jsp")</script>
+<%
     } catch (PersistenceException e) {
         out.println(e.getMessage());
     }
