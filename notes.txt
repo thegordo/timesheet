@@ -1,4 +1,5 @@
 Things left todo:
+
 -Change the install to be able to specify the Title of the company
 -Change the install to be able to specify database details
 -Change the install to be able to specify the first users user name.
@@ -7,4 +8,5 @@ Things left todo:
 
 
 Things to fix:
+
 -Singular ID generator in the database group is 1 employee is 2, should both be 1
