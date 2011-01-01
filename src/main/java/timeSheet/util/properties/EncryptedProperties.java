@@ -26,6 +26,11 @@ public class EncryptedProperties {
         return properties.get(key);
     }
 
+    public String getProperty(String key, String defaultValue) {
+        String val = getProperty(key);
+        return (val == null) ? defaultValue : val;
+    }
+
     public void store(File file, String comments) throws IOException {
         PrintStream out = new PrintStream(new FileOutputStream(file));
         Scanner commentsWriter = new Scanner(comments);

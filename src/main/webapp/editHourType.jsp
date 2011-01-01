@@ -20,8 +20,7 @@
         }
         String title = hourType != null ? "Edit Hour Type" : "Add Hour Type";
     %>
-    <title>PaySystem - <%=title%>
-    </title>
+    <title>PaySystem - <%=title%></title>
     <style type="text/css">
         @import url("display.css");
     </style>
@@ -29,7 +28,7 @@
 </head>
 <body>
 <% out.println(UtilWeb.getMenu(request));%>
-<h1>Fishbowl Pay System</h1>
+<h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
 <h2><%=title%></h2>
 
 <div class="login">

@@ -19,7 +19,7 @@
 </head>
 <body>
 <% out.println(UtilWeb.getMenu(request));%>
-<h1>Fishbowl Pay System</h1>
+<h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
 <h2>Group Management</h2>
 
 <div>

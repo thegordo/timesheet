@@ -14,7 +14,7 @@
 		<title>PaySystem</title>
 	</head>
 	<body>
-		<h1>Fishbowl Pay System</h1>
+		<h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
 		<div class="login">
 			<form action="login.jsp" method="post">
 				<label for="userName">User Name:</label>

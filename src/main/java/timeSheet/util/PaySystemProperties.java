@@ -24,6 +24,11 @@ public class PaySystemProperties {
         return properties.getProperty(property.getName());
     }
 
+    public static String getProperty(PropertyName property, String defaultValue) {
+        checkProperties();
+        return properties.getProperty(property.getName(), defaultValue);
+    }
+
     public static void setProperty(PropertyName name, String property) {
         checkProperties();
         properties.setProperty(name.getName(), property);

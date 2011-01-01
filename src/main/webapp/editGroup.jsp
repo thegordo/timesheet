@@ -29,7 +29,7 @@
 </head>
 <body>
 <% out.println(UtilWeb.getMenu(request));%>
-<h1>Fishbowl Pay System</h1>
+<h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
 <h2><%=title%></h2>
 
 <form action="library/saveGroup.jsp" method="post" name="employee">

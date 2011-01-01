@@ -1,6 +1,8 @@
 package timeSheet;
 
 import timeSheet.database.manager.DatabaseManager;
+import timeSheet.util.PaySystemProperties;
+import timeSheet.util.PropertyName;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,6 +34,10 @@ public class UtilWeb {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static String getCompanyName() {
+        return PaySystemProperties.getProperty(PropertyName.COMPANY_NAME, "");
     }
 
     public static String getFooter() {
