@@ -23,7 +23,7 @@ public class EmployeeGroup extends BaseObject {
     List<Employee> employeeList;
 
     public List<Employee> getEmployeeList() {
-        if(employeeList == null) {
+        if (employeeList == null) {
             employeeList = new ArrayList<Employee>();
         }
         return employeeList;

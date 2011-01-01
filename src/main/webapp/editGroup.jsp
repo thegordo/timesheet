@@ -10,15 +10,15 @@
 <html>
 <head>
     <%
-       UtilWeb.checkSession(session, out, false);
-       GroupManager groupManager = new GroupManager();
+        UtilWeb.checkSession(session, out, false);
+        GroupManager groupManager = new GroupManager();
 
         String groupID = request.getParameter(EmployeeGroup.Field.id.toString());
         EmployeeGroup group = null;
         if (groupID != null) {
             group = groupManager.getGroup(Integer.valueOf(groupID));
         }
-        String title = group != null ? "Edit Group": "Add Group";
+        String title = group != null ? "Edit Group" : "Add Group";
     %>
     <title>PaySystem - <%=title%>
     </title>

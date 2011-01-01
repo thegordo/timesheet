@@ -1,10 +1,9 @@
 package timeSheet.util;
 
+import timeSheet.util.properties.EncryptedProperties;
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Properties;
 
 /**
  * User: John Lawrence
@@ -12,12 +11,13 @@ import java.util.Properties;
  * Time: 11:59 PM
  */
 public class PaySystemProperties {
-    private static Properties properties;
+    private static EncryptedProperties properties;
 
     private static String fileName = "paySystem.properties";
     private static String dirPath = System.getProperty("user.home") + File.separator + ".PaySystem";
 
-    private PaySystemProperties(){}
+    private PaySystemProperties() {
+    }
 
     public static String getProperty(PropertyName property) {
         checkProperties();
@@ -27,12 +27,13 @@ public class PaySystemProperties {
     public static void setProperty(PropertyName name, String property) {
         checkProperties();
         properties.setProperty(name.getName(), property);
+        saveProperties();
     }
 
     public static void saveProperties() {
         File propertiesFile = new File(dirPath + File.separator + fileName);
         try {
-            properties.store(new FileWriter(propertiesFile), "");
+            properties.store(propertiesFile, "");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,9 +55,9 @@ public class PaySystemProperties {
                 }
             }
 
-            properties = new Properties();
+            properties = new EncryptedProperties();
             try {
-                properties.load(new FileInputStream(propertiesFile));
+                properties.load(propertiesFile);
             } catch (IOException e) {
                 e.printStackTrace();
             }

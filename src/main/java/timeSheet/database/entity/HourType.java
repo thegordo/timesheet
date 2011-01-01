@@ -12,9 +12,9 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-        @NamedQuery(name= "findAllTypes", query = "SELECT ht FROM HourType ht"),
-        @NamedQuery(name = "findTypeByName",query = "SELECT C from HourType C where UPPER(C.name) = UPPER(:name)"),
-        @NamedQuery(name = "findTypeById",query = "SELECT C from HourType C where C.id = :id")
+        @NamedQuery(name = "findAllTypes", query = "SELECT ht FROM HourType ht"),
+        @NamedQuery(name = "findTypeByName", query = "SELECT C from HourType C where UPPER(C.name) = UPPER(:name)"),
+        @NamedQuery(name = "findTypeById", query = "SELECT C from HourType C where C.id = :id")
 })
 public class HourType extends BaseObject {
     @Column(length = 256)

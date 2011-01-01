@@ -1,35 +1,35 @@
 body {
-	text-align:center;
+    text-align: center;
 }
 
 h1 {
-	text-align:center;
-	text-shadow:#8b008b;
+    text-align: center;
+    text-shadow: #8b008b;
 }
 
 div.login {
-	margin-left:auto;
-	margin-right:auto;
-	width:50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 div.menu {
-    text-align:right;
+    text-align: right;
 }
 
 label {
-    font-weight:bold;
-    float:left;
-    text-align:left;
+    font-weight: bold;
+    float: left;
+    text-align: left;
 }
 
 input {
-    float:right;
+    float: right;
 }
 
 input.calendarField {
-    float:right;
-	width:140px;
+    float: right;
+    width: 140px;
 }
 
 div.login {

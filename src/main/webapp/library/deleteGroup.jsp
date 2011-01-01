@@ -12,7 +12,7 @@
     try {
         manager.deleteGroup(Integer.parseInt(request.getParameter(EmployeeGroup.Field.id.toString())));
 %>
-        <script type="text/javascript">window.location.replace("../manageGroups.jsp");</script>
+    <script type="text/javascript">window.location.replace("../manageGroups.jsp");</script>
 <%
     } catch (PersistenceException e) {
         out.println(e.getMessage());

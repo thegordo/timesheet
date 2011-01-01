@@ -47,8 +47,8 @@
         <br/>
         <input class="submit" type="submit" value="Save">
         <br />
-</form>
-<a href='manageHourTypes.jsp'>Cancel</a><br/>
+    </form>
+    <a href='manageHourTypes.jsp'>Cancel</a><br/>
 </div>
 <% out.println(UtilWeb.getFooter());%>
 </body>

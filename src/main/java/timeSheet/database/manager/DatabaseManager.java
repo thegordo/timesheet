@@ -70,7 +70,6 @@ public class DatabaseManager {
     }
 
 
-
     public <T extends BaseObject> T persist(T object) {
         ensureConnection();
         T returnVal = null;

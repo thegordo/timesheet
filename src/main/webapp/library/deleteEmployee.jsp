@@ -13,7 +13,9 @@
     EmployeeManager manager = new EmployeeManager();
     try {
         manager.deleteEmployee(id);
-        %><script type="text/javascript">window.location.replace("../manageEmployees.jsp");</script><%
+%>
+    <script type="text/javascript">window.location.replace("../manageEmployees.jsp");</script>
+<%
     } catch (PersistenceException e) {
         out.println(e.getMessage());
     }

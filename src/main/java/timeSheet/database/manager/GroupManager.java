@@ -25,7 +25,7 @@ public class GroupManager {
         List<EmployeeGroup> groupList = getGroupList();
         StringBuilder groupSelectionList = new StringBuilder();
         for (EmployeeGroup group : groupList) {
-            if(employee != null && employee.getGroup().getId() ==  group.getId()) {
+            if (employee != null && employee.getGroup().getId() == group.getId()) {
                 groupSelectionList.append("<option selected=\"selected\" value=").append(group.getId()).append(">").append(group.getName()).append("</option>");
             } else {
                 groupSelectionList.append("<option value=").append(group.getId()).append(">").append(group.getName()).append("</option>");

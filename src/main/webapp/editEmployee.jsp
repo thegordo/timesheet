@@ -70,7 +70,7 @@
             <label for="userName">User Name:</label>
             <input class="field" id="userName" name="<%=Employee.Field.userName%>" type="text" <%= employee == null ?"":"value=" + employee.getUserName()%> />
             <br/>
-            <% if(employee == null) {
+            <% if (employee == null) {
                 out.println("<label for=\"pass1\">Password:</label><input class=\"field\" id=\"pass1\" name=\"" + Employee.Field.pass1 + "\" type=\"password\" /><br/>" +
                         "<label for=\"pass2\">Verify Password:</label><input class=\"field\" id=\"pass2\" name=\"" + Employee.Field.pass2 + "\" type=\"password\" /><br/>");
             }
@@ -99,7 +99,7 @@
     <%=employee == null ?"":"<button onclick=\"changePassword(" +employee.getId()+ ");\" id = \"changePWButton\">Change Password</button>"%>
     <div id="changePassword"></div>
 
-<% out.println(UtilWeb.getFooter());%>
+    <% out.println(UtilWeb.getFooter());%>
 </body>
 </html>
 

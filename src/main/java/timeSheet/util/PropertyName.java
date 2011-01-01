@@ -7,6 +7,13 @@ package timeSheet.util;
  */
 public enum PropertyName {
     COMPANY_NAME("companyName"),
+    LOGIN_TYPE("loginType"),
+    LDAP_SERVER("ldapServer"),
+    LDAP_DOMAIN("ldapDomain"),
+    DB_TYPE("dbType"),
+    DB_URL("dbURL"),
+    DB_USER_NAME("dbUserName"),
+    DB_PASSWORD("dbPassword"),
     ;
     private String name;
 

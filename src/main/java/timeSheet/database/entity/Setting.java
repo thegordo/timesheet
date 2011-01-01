@@ -9,7 +9,7 @@ import javax.persistence.Entity;
  * Time: 1:04 AM
  */
 @Entity
-public class Setting extends BaseObject{
+public class Setting extends BaseObject {
     @Column(length = 256)
     private String name;
 
