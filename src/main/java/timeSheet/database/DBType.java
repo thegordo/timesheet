@@ -7,6 +7,7 @@ package timeSheet.database;
  */
 public enum DBType {
     H2,
+    H2Embedded,
     MySQL,
     ;
 

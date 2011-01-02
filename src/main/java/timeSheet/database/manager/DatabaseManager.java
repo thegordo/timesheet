@@ -1,6 +1,9 @@
 package timeSheet.database.manager;
 
+import timeSheet.database.DBType;
 import timeSheet.database.entity.BaseObject;
+import timeSheet.util.PaySystemProperties;
+import timeSheet.util.PropertyName;
 
 import javax.persistence.*;
 import java.sql.Connection;
@@ -19,8 +22,9 @@ import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
  * Time: 1:03 AM
  */
 public class DatabaseManager {
-    private String TCP_CONNECTION_STRING = "jdbc:h2:tcp://localhost";
-    private String EMBEDDED_CONNECTION_STRING = "jdbc:h2:";
+    private static final String H2_TCP_CONNECTION_STRING = "jdbc:h2:tcp://localhost";
+    private static final String H2_EMBEDDED_CONNECTION_STRING = "jdbc:h2:";
+    private static final String MYSQL_CONNECTION_STRING = "jdbc:mysql://";
     private EntityManager em;
     private boolean isConnected;
 
@@ -29,8 +33,6 @@ public class DatabaseManager {
 
     public void connect(boolean create) {
         HashMap<String, String> properties = getProperties(create);
-
-        // TODO: Set this up so that the user can change databases and database urls
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("PaySystem", properties);
         em = factory.createEntityManager();
         isConnected = true;
@@ -55,17 +57,28 @@ public class DatabaseManager {
     }
 
     private HashMap<String, String> getProperties(boolean create) {
+        String location = PaySystemProperties.getProperty(PropertyName.DB_LOCATION);
         HashMap<String, String> properties = new HashMap<String, String>();
+        properties.put(JDBC_USER, PaySystemProperties.getProperty(PropertyName.DB_USER_NAME, ""));
+        properties.put(JDBC_PASSWORD, PaySystemProperties.getProperty(PropertyName.DB_PASSWORD, ""));
         if (create) {
-            properties.put(JDBC_URL, TCP_CONNECTION_STRING + "/~/timeSheet");
             properties.put(DDL_GENERATION, CREATE_ONLY);
             properties.put(DDL_GENERATION_MODE, DDL_BOTH_GENERATION);
-        } else {
-            properties.put(JDBC_URL, TCP_CONNECTION_STRING + "/~/timeSheet;IFEXISTS=TRUE");
         }
-        properties.put(JDBC_USER, "");
-        properties.put(JDBC_PASSWORD, "");
-        properties.put(JDBC_DRIVER, "org.h2.Driver");
+        switch (DBType.valueOf(PaySystemProperties.getProperty(PropertyName.DB_TYPE))) {
+            case H2:
+                properties.put(JDBC_URL, H2_TCP_CONNECTION_STRING + location + (create ? "" : ";IFEXISTS=TRUE"));
+                properties.put(JDBC_DRIVER, "org.h2.Driver");
+                break;
+            case H2Embedded:
+                properties.put(JDBC_URL, H2_EMBEDDED_CONNECTION_STRING + location + (create ? "" : ";IFEXISTS=TRUE"));
+                properties.put(JDBC_DRIVER, "org.h2.Driver");
+                break;
+            case MySQL:
+                properties.put(JDBC_URL, MYSQL_CONNECTION_STRING + location);
+                properties.put(JDBC_DRIVER, "com.mysql.jdbc.Driver");
+                break;
+        }
         return properties;
     }
 

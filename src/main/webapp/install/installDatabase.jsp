@@ -1,9 +1,7 @@
-<%@ page import="timeSheet.database.entity.Employee" %>
-<%@ page import="timeSheet.database.entity.EmployeeGroup" %>
-<%@ page import="timeSheet.database.entity.GroupRole" %>
-<%@ page import="timeSheet.database.manager.DatabaseManager" %>
-<%@ page import="timeSheet.util.SHA" %>
-<%@ page import="java.util.Calendar" %>
+<%@ page import="timeSheet.Install" %>
+<%@ page import="timeSheet.SessionConst" %>
+<%@ page import="timeSheet.UtilWeb" %>
+<%@ page import="timeSheet.database.DBType" %>
 <%--
   Created by IntelliJ IDEA.
   User: john
@@ -13,30 +11,50 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    // TODO: Get the database parameters to connect with
-    DatabaseManager manager = new DatabaseManager();
-    manager.connect(true);
-
-    EmployeeGroup adminGroup = new EmployeeGroup();
-    adminGroup.setName("admin");
-
-    Employee emp = new Employee();
-    emp.setUserName("admin");
-    emp.setName("Admin");
-    emp.setActiveFlag(true);
-    emp.setHireDate(Calendar.getInstance().getTime());
-    emp.setEmailAddress("");
-    emp.setPassword(new SHA(request.getParameter("password")).toString());
-    emp.setPtoAllowed(false);
-    emp.setGroup(adminGroup);
-    emp.setSalary(true);
-    emp.setFullTimeDate(Calendar.getInstance().getTime());
-    emp.setRole(GroupRole.Administrator);
-
-    adminGroup.addEmployee(emp);
-
-    manager.persist(emp);
-
-    out.println("success");
-
+    Install install = (Install) session.getAttribute(SessionConst.install.toString());
+    if (install != null) {
+        install.setCompanyName(request.getParameter("companyName"));
+    } else {
 %>
+<script type="text/javascript">location.replace("index.jsp")</script>
+<%
+    }
+%>
+<html>
+<head>
+    <title>Pay System Install</title>
+    <style type="text/css">
+        @import url('../display.css');
+    </style>
+    <script type="text/javascript" src="scripts.js"></script>
+</head>
+<body>
+    <h1>Pay System Installer</h1>
+
+
+    <form action="installUser.jsp">
+        <div class="login">
+            <p>Next up we need to get some information about your desired database system.</p>
+            <p>We currently have a choice to work with 2 different databases, H2 and MySQL, and we can connect to the H2
+                database either through and embedded connection or a TCP connection.</p>
+        </div>
+        <div class="login">
+            <label for="h2">H2</label><input class="field" type="radio" name="dbType" value="<%=DBType.H2.toString()%>" id="h2" checked="true" onclick="setupDBInputs()"/><br/>
+            <label for="h2E">H2 Embedded</label><input class="field" type="radio" name="dbType" value="<%=DBType.H2Embedded.toString()%>" id="h2E" onclick="setupDBInputs()"/><br/>
+            <label for="mysql">MySQL</label><input class="field" type="radio" name="dbType" value="<%=DBType.MySQL.toString()%>" id="mysql" onclick="setupDBInputs()"/><br/>
+        </div>
+        <br />
+        <div class="login">
+            <label for="DBLocation" id="dbChoice">Database Location:</label><input class="field" type="text" id="DBLocation" name="DBLocation" value="/~/.PaySystem/paySystem"/><br />
+            <label for="DBUserName">Database user name:</label><input class="field" type="text" id="DBUserName" name="DBUserName"/><br/>
+            <label for="DBPassword">Database password:</label><input class="field" type="password" id="DBPassword" name="DBPassword"/><br/>
+        </div>
+        <br/>
+        <div>
+                <input class="submit" type="submit" value="Next">
+        </div>
+    </form>
+
+    <% out.println(UtilWeb.getFooter()); %>
+</body>
+</html>

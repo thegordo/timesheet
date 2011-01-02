@@ -18,7 +18,7 @@ import java.util.Calendar;
  */
 public class Install {
     private String companyName;
-    private String dbURL;
+    private String dbLocation;
     private String dbUserName;
     private String dbPassword;
     private DBType dbType;
@@ -37,12 +37,12 @@ public class Install {
         this.companyName = companyName;
     }
 
-    public String getDbURL() {
-        return dbURL;
+    public String getDbLocation() {
+        return dbLocation;
     }
 
-    public void setDbURL(String dbURL) {
-        this.dbURL = dbURL;
+    public void setDbLocation(String dbLocation) {
+        this.dbLocation = dbLocation;
     }
 
     public String getDbUserName() {
@@ -122,7 +122,7 @@ public class Install {
 
     private void setupDatabase() {
         PaySystemProperties.setProperty(PropertyName.DB_TYPE, dbType.toString());
-        PaySystemProperties.setProperty(PropertyName.DB_URL, dbURL);
+        PaySystemProperties.setProperty(PropertyName.DB_LOCATION, dbLocation);
         PaySystemProperties.setProperty(PropertyName.DB_USER_NAME, dbUserName);
         PaySystemProperties.setProperty(PropertyName.DB_PASSWORD, dbPassword);
 

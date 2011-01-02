@@ -11,7 +11,7 @@ public enum PropertyName {
     LDAP_SERVER("ldapServer"),
     LDAP_DOMAIN("ldapDomain"),
     DB_TYPE("dbType"),
-    DB_URL("dbURL"),
+    DB_LOCATION("dbLocation"),
     DB_USER_NAME("dbUserName"),
     DB_PASSWORD("dbPassword"),
     ;
