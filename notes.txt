@@ -1,11 +1,14 @@
 Things left todo:
 
--Change the install to be able to specify the Title of the company
--Change the install to be able to specify database details
--Change the install to be able to specify the first users user name.
-
+-Change the Login to look at LDAP stuff if set.
+-Auto create User on Login, with option in settings.
+-Create and make work settings page.
+-Create user management page.
+-Create Manage time page.
+-Create Enter time page.
+-Create Reports page.
+-Create ADP Report/Export
 -Change DB Structure to allow for multiple groups per employee.
-
 
 Things to fix:
 
