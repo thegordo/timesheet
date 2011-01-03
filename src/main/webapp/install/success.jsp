@@ -8,6 +8,10 @@
 <script type="text/javascript">location.replace("index.jsp")</script>
 <%
     } else {
+        if (request.getParameter("LDAPServer") != null) {
+            install.setLDAPServer(request.getParameter("LDAPServer"));
+            install.setLDAPServer(request.getParameter("LDAPDomain"));
+        }
         install.doInstall();
     }
     session.invalidate();

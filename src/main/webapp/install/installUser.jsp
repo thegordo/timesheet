@@ -51,12 +51,12 @@
         <p>Would you like to use LDAP Authentication?</p>
     </div>
     <div class="login">
-        <label for="ldapLogin">Use LDAP to login:</label><input class="field" type="checkbox" name="ldapLogin" id="ldapLogin"><br />
+        <label for="ldapLogin">Use LDAP to login:</label><input class="field" type="checkbox" name="ldapLogin" id="ldapLogin" onclick="changeButtonText()"><br />
     </div>
 
     <br />
     <div>
-        <input class="submit" type="submit" value="Install">
+        <input class="submit" type="submit" value="Install" id="submitButton">
     </div>
 </form>
 <% out.println(UtilWeb.getFooter()); %>

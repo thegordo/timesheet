@@ -39,16 +39,12 @@
 <h1>Pay System Installer</h1>
 
 <form action="success.jsp" method="post">
-    <div class="installInstruction">We also need to setup an administrative user that will be the user to use for HR
-        purposes. <br/>Other users and settings can be modified after the install.
-    </div>
+    <div class="installInstruction">Please enter the following required information for LDAP:</div>
     <br/>
 
     <div class="login">
-        <label for="adminName">Name:</label><input class="field" type="text" id="adminName" name="adminName"><br/>
-        <label for="adminUserName">Admin User Name:</label><input class="field" type="text" id="adminUserName" name="adminUserName" value="admin"/><br/>
-        <label for="adminPassword">Password:</label><input class="field" type="password" id="adminPassword" onkeyup="checkPassword()"/><br/>
-        <label for="adminPassword2">Password(again):</label><input class="field" type="password" id="adminPassword2" onkeyup="checkPassword()"/><br/>
+        <label for="LDAPServer">LDAP Server:</label><input class="field" type="text" id="LDAPServer" name="LDAPServer"><br/>
+        <label for="LDAPDomain">LDAP Domain:</label><input class="field" type="text" id="LDAPDomain" name="LDAPDomain" /><br/>
     </div>
     <div id="passwordVerification"></div>
     <br/>

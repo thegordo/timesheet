@@ -27,3 +27,11 @@ function setupDBInputs() {
         document.getElementById("DBLocation").value = "/~/.PaySystem/paySystem";
     }
 }
+
+function changeButtonText() {
+    if (document.getElementById("ldapLogin").checked == 1) {
+        document.getElementById("submitButton").value = "Next";
+    } else {
+        document.getElementById("submitButton").value = "Install";
+    }
+}
