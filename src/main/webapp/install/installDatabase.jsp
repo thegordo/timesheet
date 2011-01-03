@@ -32,7 +32,7 @@
     <h1>Pay System Installer</h1>
 
 
-    <form action="installUser.jsp">
+    <form action="installUser.jsp" method="post">
         <div class="login">
             <p>Next up we need to get some information about your desired database system.</p>
             <p>We currently have a choice to work with 2 different databases, H2 and MySQL, and we can connect to the H2

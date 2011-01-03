@@ -65,6 +65,9 @@ public class DatabaseManager {
             properties.put(DDL_GENERATION, CREATE_ONLY);
             properties.put(DDL_GENERATION_MODE, DDL_BOTH_GENERATION);
         }
+        if (PaySystemProperties.getProperty(PropertyName.DB_TYPE) == null) {
+            return null;
+        }
         switch (DBType.valueOf(PaySystemProperties.getProperty(PropertyName.DB_TYPE))) {
             case H2:
                 properties.put(JDBC_URL, H2_TCP_CONNECTION_STRING + location + (create ? "" : ";IFEXISTS=TRUE"));
