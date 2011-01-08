@@ -1,13 +1,13 @@
 <component name="ArtifactManager">
-    <artifact type="exploded-war" name="timeSheet:war exploded">
-        <output-path>$PROJECT_DIR$/target/PaySystem</output-path>
-        <root id="root">
-            <element id="javaee-facet-resources" facet="timeSheet/web/Web"/>
-            <element id="directory" name="WEB-INF">
-                <element id="directory" name="classes">
-                    <element id="module-output" name="timeSheet"/>
-                </element>
-            </element>
-        </root>
-    </artifact>
+  <artifact type="exploded-war" name="timeSheet:war exploded">
+    <output-path>$PROJECT_DIR$/target/PaySystem</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="timeSheet/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="timeSheet" />
+        </element>
+      </element>
+    </root>
+  </artifact>
 </component>
