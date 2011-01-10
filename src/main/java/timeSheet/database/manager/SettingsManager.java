@@ -41,6 +41,11 @@ public class SettingsManager {
         return (dbPassword != null) ? dbPassword : "";
     }
 
+    public String getCompanyName() {
+        String companyName = PaySystemProperties.getProperty(PropertyName.COMPANY_NAME);
+        return (companyName != null) ? companyName : "";
+    }
+
     public void saveParameters(Map<String, String[]> parameterMap) {
         if (parameterMap.isEmpty()) {
             return;

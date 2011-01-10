@@ -31,6 +31,11 @@
 <h2>System Settings Management</h2>
 <div class="login">
     <form action="manageSettings.jsp" method="post">
+        <h4>Company Settings</h4>
+        <br />
+        <label for="companyName">Company Name:</label>
+        <input class="field" type="text" id="companyName" name="<%=PropertyName.COMPANY_NAME.getName()%>" value="<%=manager.getCompanyName()%>">
+        <br/>
         <h4>Login Settings</h4>
         <br/>
         <label for="loginType">Database Type:</label>
