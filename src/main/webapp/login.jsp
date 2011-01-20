@@ -1,6 +1,7 @@
+<%@ page import="timeSheet.Login" %>
 <%@ page import="timeSheet.SessionConst" %>
-<%@ page import="timeSheet.database.entity.Employee" %>
-<%@ page import="timeSheet.database.manager.EmployeeManager" %>
+<%@ page import="timeSheet.database.manager.SettingsManager" %>
+<%@ page import="timeSheet.util.LoginType" %>
 <%@ page import="timeSheet.util.SHA" %>
 <%@ page import="java.util.logging.Logger" %>
 <%--
@@ -16,10 +17,16 @@
 	if (username == null || password == null) {
 		out.print("Invalid parameters ");
 	} else {
-        EmployeeManager manager = new EmployeeManager();
-        Employee employee = manager.getEmployee(username);
-        if (employee.getPassword().equals(password)) {
-            session.setAttribute(SessionConst.employee.toString(), employee);
+        Login login = new Login(username, password);
+        SettingsManager settings = new SettingsManager();
+        boolean authorized;
+        if (settings.getLoginType() == LoginType.LDAP) {
+            authorized = login.checkLDAPLogin(request.getParameter("password"));
+        } else {
+            authorized = login.checkDatabaseLogin();
+        }
+        if (authorized) {
+            session.setAttribute(SessionConst.employee.toString(), login.getEmployee());
             out.println("<script type=\"text/javascript\">window.location.replace(\"dashboard.jsp\");</script>");
         } else {
             out.println("Invalid username and password");

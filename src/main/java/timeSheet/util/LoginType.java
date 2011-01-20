@@ -1,5 +1,7 @@
 package timeSheet.util;
 
+import timeSheet.database.manager.SettingsManager;
+
 /**
  * User: John Lawrence
  * Date: 1/1/11
@@ -21,7 +23,9 @@ public enum LoginType {
     }
 
     public static String getSelection() {
-        LoginType selectedType = LoginType.valueOf(PaySystemProperties.getProperty(PropertyName.LOGIN_TYPE));
+        SettingsManager manager = new SettingsManager();
+
+        LoginType selectedType = manager.getLoginType();
         StringBuilder options = new StringBuilder();
         for (LoginType type : values()) {
             options.append("<option value=\"").append(type.toString()).append("\" ");

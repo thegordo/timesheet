@@ -26,6 +26,12 @@ public class SettingsManager {
         return ldapDomain != null ? ldapDomain:"";
     }
 
+
+    public LoginType getLoginType() {
+        LoginType loginType = LoginType.valueOf(PaySystemProperties.getProperty(PropertyName.LOGIN_TYPE));
+        return loginType != null ? loginType : LoginType.Database;
+    }
+
     public String getDBLocation() {
         String dbLocation = PaySystemProperties.getProperty(PropertyName.DB_LOCATION);
         return (dbLocation != null) ? dbLocation : "";
