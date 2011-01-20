@@ -1,6 +1,5 @@
 Things left todo:
 
--Change the Login to look at LDAP stuff if set.
 -Auto create User on Login, with option in settings.
 -Create user management page.
 -Create Manage time page.
