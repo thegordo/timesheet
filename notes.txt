@@ -1,6 +1,5 @@
 Things left todo:
 
--Create and make work settings page.
 -Change the Login to look at LDAP stuff if set.
 -Auto create User on Login, with option in settings.
 -Create user management page.
