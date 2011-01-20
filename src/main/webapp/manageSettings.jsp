@@ -38,7 +38,7 @@
         <br/>
         <h4>Login Settings</h4>
         <br/>
-        <label for="loginType">Database Type:</label>
+        <label for="loginType">Login Type:</label>
         <select id="loginType" name="<%=PropertyName.LOGIN_TYPE.getName()%>" class="field">
             <% out.println(LoginType.getSelection()); %>
         </select>
