@@ -33,10 +33,12 @@ public class Dashboard {
             case Manager:
             case AssistantManager:
             case TimeSheetApproval:
-                sortedMenu.append("<a href=\"manageTime.jsp\">Manage Time</a><br />");
+                sortedMenu.insert(0, "<a href=\"manageTime.jsp\">Manage Time</a><br />");
             case Employee:
-                sortedMenu.append("<a href=\"timeEntering.jsp\">Enter Time</a><br />");
-                sortedMenu.append("<a href=\"manageUser.jsp\">Manage Account</a><br />");
+                sortedMenu.insert(0, "<a href=\"manageUser.jsp\">Manage Account</a><br />");
+                if (!currentEmployee.getSalary()) {
+                    sortedMenu.insert(0, "<a href=\"timeEntering.jsp\">Enter Time</a><br />");
+                }
         }
         return sortedMenu.toString();
     }
