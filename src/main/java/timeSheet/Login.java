@@ -26,7 +26,7 @@ public class Login {
     }
 
     public boolean checkDatabaseLogin() {
-        return employee.getPassword().equals(password);
+        return employee != null && employee.getPassword().equals(password);
     }
 
     public boolean checkLDAPLogin(String password) {
