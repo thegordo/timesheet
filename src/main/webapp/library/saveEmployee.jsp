@@ -2,6 +2,7 @@
 <%@ page import="timeSheet.database.entity.Employee" %>
 <%@ page import="timeSheet.database.entity.GroupRole" %>
 <%@ page import="timeSheet.database.manager.EmployeeManager" %>
+<%@ page import="timeSheet.database.manager.GroupManager" %>
 <%@ page import="timeSheet.util.SHA" %>
 <%@ page import="javax.persistence.PersistenceException" %>
 <%@ page import="java.text.ParseException" %>
@@ -38,6 +39,8 @@
     } catch (ParseException e) {
         e.printStackTrace();
     }
+    GroupManager groupManager = new GroupManager();
+    employee.setGroup(groupManager.getGroup(Integer.parseInt(request.getParameter(Employee.Field.group.toString()))));
 
     try {
         manager.saveEmployee(employee);
