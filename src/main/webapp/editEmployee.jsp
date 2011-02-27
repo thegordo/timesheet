@@ -44,11 +44,11 @@
             <input class="field" id="name" name="<%=Employee.Field.name%>" type="text" <%= employee == null ?"":"value="+ employee.getName()%> />
             <br/>
             <label for="dateHired">Date Hired:</label>
-            <script type="text/javascript"> new tcal({'formname': 'employee', 'controlname': 'dateHired'});</script>
+            <script type="text/javascript"> new Tcal('employee', 'dateHired');</script>
             <input class="calendarField" id="dateHired" name="<%=Employee.Field.dateHired%>" type="text" <%= employee == null ? "" : "value=" + format.format(employee.getHireDate()) %> />
             <br/>
             <label for="fullTimeDate">Full Time Date:</label>
-            <script type="text/javascript">new tcal({'formname': 'employee','controlname': 'fullTimeDate'});</script>
+            <script type="text/javascript">new Tcal('employee', 'fullTimeDate');</script>
             <input class="calendarField" id="fullTimeDate" name="<%=Employee.Field.fullTimeDate%>" type="text" <%= employee == null ? "" : "value=" + format.format(employee.getFullTimeDate()) %> />
             <br/>
             <label for="group">Group:</label>

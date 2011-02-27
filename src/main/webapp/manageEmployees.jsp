@@ -3,7 +3,7 @@
 <%@ page import="timeSheet.database.manager.EmployeeManager" %>
 <%@ page import="java.util.List" %>
 <%--
-  User: John LAwrence
+  User: John Lawrence
   Date: Dec 5, 2010
   Time: 2:10:30 AM
 --%>
