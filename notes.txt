@@ -1,6 +1,5 @@
 Things left todo:
 
--Auto create User on Login, with option in settings. (LDAP Login Only).
 -Create user management page.
 -Create Manage time page.
 -Create Enter time page.
