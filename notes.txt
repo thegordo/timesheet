@@ -1,6 +1,5 @@
 Things left todo:
 
--Create user management page.
 -Create Manage time page.
 -Create Enter time page.
 -Create Reports page.
@@ -9,5 +8,4 @@ Things left todo:
 -Change DB Structure to allow for multiple groups per employee.
 
 Things to fix:
-
--Singular ID generator in the database group is 1 employee is 2, should both be 1
+GO to github to see what there is to fix.
