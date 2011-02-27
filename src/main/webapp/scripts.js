@@ -2,7 +2,9 @@ function changePassword(id) {
     var element = document.getElementById("changePassword");
     var elementButton = document.getElementById("changePWButton");
     if (element.innerHTML == "") {
-        element.innerHTML = "<button onclick='changePassword(null)'>Cancel</button><br /><input type='password' id='pass1'><br /><input type='password' id='pass2'>";
+        element.innerHTML = "<button onclick='changePassword(null)'>Cancel</button><br />" +
+                "<div class='login'><label for='pass1'>New Password:</label><input class='field' type='password' id='pass1'><br />" +
+                "<label for='pass2'>Confirm Password:</label><input class='field' type='password' id='pass2'><br /></div>";
         elementButton.innerHTML = "Submit Password";
     } else {
         if (id != null) {
@@ -14,6 +16,7 @@ function changePassword(id) {
             }
         } else {
             element.innerHTML = "";
+            elementButton.innerHTML = "Change Password";
         }
     }
 }
