@@ -6,7 +6,7 @@
 <html>
     <head>
         <% UtilWeb.checkInstall(out); %>
-        <% UtilWeb.checkSession(session, out, true); %>
+        <% UtilWeb.checkSession(session, out, true, false); %>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<style type="text/css">
 			@import url('display.css');

@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% UtilWeb.checkSession(session, out, false); %>
+    <% UtilWeb.checkSession(session, out, false, true); %>
     <% GroupManager groupManager = new GroupManager(); %>
     <title>PaySystem - Manage Groups</title>
     <style type="text/css">

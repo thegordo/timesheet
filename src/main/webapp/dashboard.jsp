@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% UtilWeb.checkSession(session, out, false); %>
+    <% UtilWeb.checkSession(session, out, false, false); %>
     <% Dashboard dashboard = new Dashboard(session); %>
     <title>PaySystem - Dashboard</title>
     <style type="text/css">

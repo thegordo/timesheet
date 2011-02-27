@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% UtilWeb.checkSession(session, out, false); %>
+    <% UtilWeb.checkSession(session, out, false, true); %>
     <% HourTypeManager groupManager = new HourTypeManager(); %>
     <title>PaySystem - Manage Hour Types</title>
     <style type="text/css">

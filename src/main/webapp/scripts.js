@@ -8,12 +8,7 @@ function changePassword(id) {
         elementButton.innerHTML = "Submit Password";
     } else {
         if (id != null) {
-            if (doPasswordChange(id)) {
-                elementButton.innerHTML = "Change Password";
-                element.innerHTML = "";
-            } else {
-                alert("Unable to change Password");
-            }
+            doPasswordChange(id);
         } else {
             element.innerHTML = "";
             elementButton.innerHTML = "Change Password";
@@ -22,6 +17,12 @@ function changePassword(id) {
 }
 
 function doPasswordChange(id) {
+    String.prototype.trim = function () {
+        return this.replace(/^\s*/, "").replace(/\s*$/, "");
+    }
+    var element = document.getElementById("changePassword");
+    var elementButton = document.getElementById("changePWButton");
+
     var pass1 = document.getElementById("pass1").value;
     var pass2 = document.getElementById("pass2").value;
     if (pass1 != pass2) {
@@ -34,7 +35,7 @@ function doPasswordChange(id) {
     }
 
     var request = new XMLHttpRequest();
-    var url = "library/changePW.php";
+    var url = "library/changePW.jsp";
     var parameters = "password=" + pass1 + "&id=" + id;
     request.open("POST", url, true);
 
@@ -47,8 +48,11 @@ function doPasswordChange(id) {
         if (request.readyState == 4) {
             if (request.status == 200) {
                 document.body.style.cursor = "default";
-                if (request.responseText != "success") {
+                if (request.responseText.trim() != "success") {
                     alert("Unable to change password.");
+                } else {
+                    elementButton.innerHTML = "Change Password";
+                    element.innerHTML = "";
                 }
             } else {
                 alert("Unable to change password.");
@@ -61,6 +65,8 @@ function doPasswordChange(id) {
     request.send(parameters);
 
 }
+
+
 
 function calculateTime() {
     var start = document.getElementById("startTime").value;

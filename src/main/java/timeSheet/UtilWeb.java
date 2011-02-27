@@ -1,5 +1,6 @@
 package timeSheet;
 
+import timeSheet.database.entity.Employee;
 import timeSheet.database.manager.DatabaseManager;
 import timeSheet.util.PaySystemProperties;
 import timeSheet.util.PropertyName;
@@ -19,15 +20,21 @@ public class UtilWeb {
     private static SimpleDateFormat simpleDateFormat;
 
     // TODO: Add in whether or not this supposed to be an admin only page.
-    public static void checkSession(HttpSession session, JspWriter out, boolean isIndex) {
-        Object sessionCheck = session.getAttribute(SessionConst.employee.toString());
-        if (sessionCheck == null && !isIndex) {
+    public static void checkSession(HttpSession session, JspWriter out, boolean isIndex, boolean isAdmin) {
+        Employee employee = (Employee) session.getAttribute(SessionConst.employee.toString());
+        if (employee == null && !isIndex) { // Check to see if the session has expired.
             try {
                 out.println("<script type=\"text/javascript\">window.location.replace(\"index.jsp\");</script>");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (sessionCheck != null && isIndex) {
+        } else if (employee != null && isIndex) { // If they have an active session and We are on the index page, go to dashboard.
+            try {
+                out.println("<script type=\"text/javascript\">window.location.replace(\"dashboard.jsp\");</script>");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (employee != null && isAdmin && !employee.isAdmin()) { // If this is an admin only page, go back to the dashboard if the employee is not admin
             try {
                 out.println("<script type=\"text/javascript\">window.location.replace(\"dashboard.jsp\");</script>");
             } catch (IOException e) {

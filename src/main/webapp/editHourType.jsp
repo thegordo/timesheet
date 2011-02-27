@@ -10,7 +10,7 @@
 <html>
 <head>
     <%
-        UtilWeb.checkSession(session, out, false);
+        UtilWeb.checkSession(session, out, false, true);
         HourTypeManager groupManager = new HourTypeManager();
 
         String hourTypeId = request.getParameter(HourType.Field.id.toString());
