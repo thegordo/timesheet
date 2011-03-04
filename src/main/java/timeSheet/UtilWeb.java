@@ -19,7 +19,6 @@ import java.text.SimpleDateFormat;
 public class UtilWeb {
     private static SimpleDateFormat simpleDateFormat;
 
-    // TODO: Add in whether or not this supposed to be an admin only page.
     public static void checkSession(HttpSession session, JspWriter out, boolean isIndex, boolean isAdmin) {
         Employee employee = (Employee) session.getAttribute(SessionConst.employee.toString());
         if (employee == null && !isIndex) { // Check to see if the session has expired.

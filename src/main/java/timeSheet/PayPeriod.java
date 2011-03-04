@@ -77,8 +77,15 @@ public class PayPeriod {
         Calendar end = Calendar.getInstance();
         end.setTime(endDate);
         int endSelection = end.get(Calendar.DAY_OF_MONTH);
+        Calendar today = Calendar.getInstance();
+        today.setTime(useDate);
+        int now = today.get(Calendar.DAY_OF_MONTH);
         while (number <= endSelection) {
-            options.append("<option>").append(number).append("</option>\n");
+            if (number == now) {
+                options.append("<option selected>").append(number).append("</option>\n");
+            } else {
+                options.append("<option>").append(number).append("</option>\n");
+            }
             number ++;
         }
         return options.toString();

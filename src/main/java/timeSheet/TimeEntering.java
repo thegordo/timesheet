@@ -42,7 +42,6 @@ public class TimeEntering {
         tableRow.append("<tr>\n");
         Date date = period.getFirstDateShown();
         Calendar cal = Calendar.getInstance();
-        int startDayOfPeriod = cal.get(Calendar.DAY_OF_MONTH);
         cal.setTime(date);
         int weeklyHoursTotal = 0;
         for (int index = 0; index < 8; index++) {
@@ -50,7 +49,11 @@ public class TimeEntering {
             if (index == 7) {
                 tableRow.append("<td class='total' id='week").append(weekNum).append("total'>Total:<br />").append(weeklyHoursTotal).append("</td>");
             } else {
-                cal.set(Calendar.DAY_OF_MONTH, factor + startDayOfPeriod);
+                if (index == 0) {
+                    cal.add(Calendar.DAY_OF_MONTH, factor);
+                } else {
+                    cal.add(Calendar.DAY_OF_MONTH, 1);
+                }
                 Date tempDate = cal.getTime();
                 tableRow.append("<td class='hourTable' >").append("<p class='dateNumber' > ").append(cal.get(Calendar.DAY_OF_MONTH)).append(" </p > ");
                 List<Hours> hourList = hoursManager.getHoursByEmployeeAndDate(employee, tempDate);
@@ -85,6 +88,10 @@ public class TimeEntering {
 
     public String getPayPeriodTotals() {
         HoursManager hoursManager = new HoursManager();
-        return "<p>Totals hours for the pay period: " + hoursManager.getTotalHoursWorkedInPayPeriod(employee, period) + "</p>";
+        Double totalHoursWorkedInPayPeriod = hoursManager.getTotalHoursWorkedInPayPeriod(employee, period);
+        if (totalHoursWorkedInPayPeriod == null) {
+            totalHoursWorkedInPayPeriod = 0.0;
+        }
+        return "<p>Totals hours for the pay period: " + totalHoursWorkedInPayPeriod + "</p>";
     }
 }
