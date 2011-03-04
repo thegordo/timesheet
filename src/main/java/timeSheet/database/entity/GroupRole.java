@@ -34,4 +34,8 @@ public enum GroupRole {
         }
         return roleOptions.toString();
     }
+
+    public boolean isTimeManager() {
+        return this != Employee;
+    }
 }

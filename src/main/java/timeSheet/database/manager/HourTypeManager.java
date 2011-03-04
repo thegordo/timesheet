@@ -49,4 +49,17 @@ public class HourTypeManager {
     public void deleteType(int id) {
         manager.delete(getType(id));
     }
+
+    public String getOptions(boolean limit) {
+        List<HourType> types = getList();
+        StringBuilder builder = new StringBuilder();
+        for (HourType type : types) {
+            if (type.getDefaultFlag() && !limit) {
+                builder.append("<option ").append("value='").append(type.getId()).append("' selected>").append(type.getName()).append("</option>\n");
+            } else {
+                builder.append("<option ").append("value='").append(type.getId()).append("'>").append(type.getName()).append("</option>\n");
+            }
+        }
+        return builder.toString();
+    }
 }

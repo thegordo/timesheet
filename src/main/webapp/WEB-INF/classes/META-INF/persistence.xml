@@ -7,5 +7,6 @@
         <class>timeSheet.database.entity.Employee</class>
         <class>timeSheet.database.entity.HourType</class>
         <class>timeSheet.database.entity.Setting</class>
+        <class>timeSheet.database.entity.Hours</class>
     </persistence-unit>
 </persistence>

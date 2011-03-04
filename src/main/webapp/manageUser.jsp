@@ -38,5 +38,6 @@
 
     <%=employee == null ? "" : "<button onclick=\"changePassword(" + employee.getId() + ");\" id = \"changePWButton\">Change Password</button>"%>
     <div id="changePassword"></div>
+    <% out.println(UtilWeb.getFooter());%>
 </body>
 </html>

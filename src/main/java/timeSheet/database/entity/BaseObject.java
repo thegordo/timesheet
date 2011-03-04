@@ -1,8 +1,6 @@
 package timeSheet.database.entity;
 
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 /**
@@ -11,16 +9,7 @@ import javax.persistence.MappedSuperclass;
  * Time: 12:47 AM
  */
 @MappedSuperclass
-public class BaseObject {
-    @Id
-    @GeneratedValue
-    protected int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+public abstract class BaseObject {
+    public abstract int getId();
+    public abstract void setId(int id);
 }

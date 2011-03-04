@@ -49,6 +49,9 @@ public class Employee extends BaseObject {
 
     @Column
     private Boolean activeFlag;
+    @Id
+    @GeneratedValue
+    protected int id;
 
     public String getName() {
         return name;
@@ -156,6 +159,14 @@ public class Employee extends BaseObject {
 
     public boolean isAdmin() {
         return role == GroupRole.Administrator;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 

@@ -1,9 +1,6 @@
 package timeSheet.database.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 
 /**
  * User: John Lawrence
@@ -18,13 +15,17 @@ import javax.persistence.NamedQuery;
 })
 public class HourType extends BaseObject {
     @Column(length = 256)
-    public String name;
+    private String name;
 
     @Column
-    public Boolean paid;
+    private Boolean paid;
 
     @Column
-    public Boolean defaultFlag;
+    private Boolean defaultFlag;
+
+    @Id
+    @GeneratedValue
+    protected int id;
 
     public String getName() {
         return name;
@@ -48,6 +49,14 @@ public class HourType extends BaseObject {
 
     public void setDefaultFlag(Boolean defaultFlag) {
         this.defaultFlag = defaultFlag;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public enum Field {

@@ -2,6 +2,8 @@ package timeSheet.database.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * User: John Lawrence
@@ -15,6 +17,10 @@ public class Setting extends BaseObject {
 
     @Column(length = 256)
     private String value;
+
+    @Id
+    @GeneratedValue
+    protected int id;
 
     public String getName() {
         return name;
@@ -30,5 +36,13 @@ public class Setting extends BaseObject {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

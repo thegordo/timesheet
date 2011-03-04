@@ -22,6 +22,10 @@ public class EmployeeGroup extends BaseObject {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "group")
     List<Employee> employeeList;
 
+    @Id
+    @GeneratedValue
+    protected int id;
+
     public List<Employee> getEmployeeList() {
         if (employeeList == null) {
             employeeList = new ArrayList<Employee>();
@@ -43,6 +47,14 @@ public class EmployeeGroup extends BaseObject {
 
     public void addEmployee(Employee emp) {
         getEmployeeList().add(emp);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public enum Field {
