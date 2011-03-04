@@ -4,6 +4,7 @@
     <option name="myLocal" value="false" />
     <inspection_tool class="FieldCanBeLocal" enabled="true" level="INFO" enabled_by_default="true" />
     <inspection_tool class="Fix shebang" level="WARNING" enabled="true">/bin/sh#/bin/bash</inspection_tool>
+    <inspection_tool class="JSLowercasedConstructorCall" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="JpaModelErrorInspection" level="WARNING" enabled="true" />
   </profile>
 </component>

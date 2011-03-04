@@ -40,10 +40,6 @@ function f_tcalGenerDate(d_date) {
             );
 }
 
-function Tcal(formName, controlName) {
-    tcal({'formname': formName, 'controlname': controlName}, A_TCALDEF);
-}
-
 // implementation
 function tcal(a_cfg, a_tpl) {
 
