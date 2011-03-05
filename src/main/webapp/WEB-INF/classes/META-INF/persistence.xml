@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
-
     <persistence-unit name="PaySystem" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>timeSheet.database.entity.EmployeeGroup</class>
@@ -8,5 +7,6 @@
         <class>timeSheet.database.entity.HourType</class>
         <class>timeSheet.database.entity.Setting</class>
         <class>timeSheet.database.entity.Hours</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
     </persistence-unit>
 </persistence>

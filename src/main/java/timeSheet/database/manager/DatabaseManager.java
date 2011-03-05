@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 
 import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
 
-
 /**
  * User: John Lawrence
  * Date: 12/10/10
@@ -63,7 +62,7 @@ public class DatabaseManager {
         properties.put(JDBC_PASSWORD, PaySystemProperties.getProperty(PropertyName.DB_PASSWORD, ""));
         if (create) {
             properties.put(DDL_GENERATION, CREATE_ONLY);
-            properties.put(DDL_GENERATION_MODE, DDL_BOTH_GENERATION);
+
         }
         if (PaySystemProperties.getProperty(PropertyName.DB_TYPE) == null) {
             return null;
@@ -85,8 +84,15 @@ public class DatabaseManager {
         return properties;
     }
 
-
     public <T extends BaseObject> T persist(T object) {
+        if (object.getId() < 1) {
+            return persistNew(object);
+        } else {
+            return merge(object);
+        }
+    }
+
+    private <T extends BaseObject> T persistNew(T object) {
         ensureConnection();
         T returnVal = null;
         try {
@@ -98,6 +104,19 @@ public class DatabaseManager {
             Logger.getLogger("Manager").log(Level.SEVERE, e.getMessage(), e);
         }
         return returnVal;
+    }
+
+    public <T extends BaseObject> T merge(T object) {
+        ensureConnection();
+        try {
+            em.getTransaction().begin();
+            object = em.merge(object);
+            em.persist(object);
+            em.getTransaction().commit();
+        } catch (PersistenceException e) {
+            Logger.getLogger("Manager").log(Level.SEVERE, e.getMessage(), e);
+        }
+        return object;
     }
 
     public EntityManager getEntityManager() {

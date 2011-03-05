@@ -25,9 +25,9 @@
         String password = sha1.toString();
         employee.setPassword(password);
     }
-    employee.setActiveFlag(Boolean.parseBoolean(request.getParameter(Employee.Field.active.toString())));
-    employee.setSalary(Boolean.parseBoolean(request.getParameter(Employee.Field.salaried.toString())));
-    employee.setPtoAllowed(Boolean.parseBoolean(request.getParameter(Employee.Field.ptoAllowed.toString())));
+    employee.setActiveFlag(request.getParameter(Employee.Field.active.toString()) != null);
+    employee.setSalary(request.getParameter(Employee.Field.salaried.toString()) != null);
+    employee.setPtoAllowed(request.getParameter(Employee.Field.ptoAllowed.toString()) != null);
     employee.setEmailAddress(request.getParameter(Employee.Field.email.toString()));
     employee.setFileNumber(request.getParameter(Employee.Field.fileNum.toString()));
     employee.setName(request.getParameter(Employee.Field.name.toString()));
