@@ -13,9 +13,10 @@ import java.util.Date;
         @NamedQuery(name = "findHoursByEmployeeAndDate", query = "Select c from Hours c where c.employee = :employee and c.date = :date"),
         @NamedQuery(name = "findSumOfPaidHours", query = "Select sum(c.hours) from Hours c where c.date between :start and :end and c.employee = :employee and c.type.paid = true")
 })
+@SequenceGenerator(name = "hoursGen", allocationSize = 1)
 public class Hours extends BaseObject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hoursGen")
     private int id;
 
     @ManyToOne(targetEntity = HourType.class, cascade = CascadeType.PERSIST)

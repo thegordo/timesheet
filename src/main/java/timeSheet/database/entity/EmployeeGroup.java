@@ -15,6 +15,7 @@ import java.util.List;
         @NamedQuery(name = "findGroupsById", query = "SELECT c FROM EmployeeGroup c WHERE c.id = :id"),
         @NamedQuery(name = "findGroupsByName", query = "SELECT c FROM EmployeeGroup c WHERE UPPER(c.name) = UPPER(:name)")
 })
+@SequenceGenerator(name = "groupGen", allocationSize = 1)
 public class EmployeeGroup extends BaseObject {
     @Column(length = 256, unique = true)
     public String name;
@@ -23,7 +24,7 @@ public class EmployeeGroup extends BaseObject {
     List<Employee> employeeList;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupGen")
     protected int id;
 
     public List<Employee> getEmployeeList() {

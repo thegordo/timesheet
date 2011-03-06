@@ -9,6 +9,7 @@ import java.util.Date;
  * Time: 1:02 AM
  */
 @Entity
+@SequenceGenerator(name="employeeGen", allocationSize = 1)
 public class Employee extends BaseObject {
     @Column(length = 256)
     private String name;
@@ -49,8 +50,9 @@ public class Employee extends BaseObject {
 
     @Column
     private Boolean activeFlag;
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employeeGen")
     protected int id;
 
     public String getName() {

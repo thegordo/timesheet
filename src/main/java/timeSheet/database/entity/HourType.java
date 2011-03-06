@@ -13,6 +13,7 @@ import javax.persistence.*;
         @NamedQuery(name = "findTypeByName", query = "SELECT C from HourType C where UPPER(C.name) = UPPER(:name)"),
         @NamedQuery(name = "findTypeById", query = "SELECT C from HourType C where C.id = :id")
 })
+@SequenceGenerator(name = "hourTypeGen", allocationSize = 1)
 public class HourType extends BaseObject {
     @Column(length = 256)
     private String name;
@@ -24,7 +25,7 @@ public class HourType extends BaseObject {
     private Boolean defaultFlag;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hourTypeGen")
     protected int id;
 
     public String getName() {

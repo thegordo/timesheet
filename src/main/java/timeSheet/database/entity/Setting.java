@@ -1,9 +1,6 @@
 package timeSheet.database.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * User: John Lawrence
@@ -11,6 +8,7 @@ import javax.persistence.Id;
  * Time: 1:04 AM
  */
 @Entity
+@SequenceGenerator(name = "settingGen", allocationSize = 1)
 public class Setting extends BaseObject {
     @Column(length = 256)
     private String name;
@@ -19,7 +17,7 @@ public class Setting extends BaseObject {
     private String value;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "settingGen")
     protected int id;
 
     public String getName() {
