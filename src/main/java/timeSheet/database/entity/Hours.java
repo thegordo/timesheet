@@ -18,10 +18,10 @@ public class Hours extends BaseObject {
     @GeneratedValue
     private int id;
 
-    @ManyToOne(targetEntity = HourType.class)
+    @ManyToOne(targetEntity = HourType.class, cascade = CascadeType.PERSIST)
     private HourType type;
 
-    @ManyToOne(targetEntity = Employee.class)
+    @ManyToOne(targetEntity = Employee.class, cascade = CascadeType.PERSIST)
     private Employee employee;
 
     @Temporal(TemporalType.DATE)

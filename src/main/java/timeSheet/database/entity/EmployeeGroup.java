@@ -19,7 +19,7 @@ public class EmployeeGroup extends BaseObject {
     @Column(length = 256, unique = true)
     public String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "group")
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "group")
     List<Employee> employeeList;
 
     @Id
