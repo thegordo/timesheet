@@ -35,9 +35,9 @@
 <form action="library/saveGroup.jsp" method="post" name="employee">
     <div class="login">
         <label for="name">Name:</label>
-        <input class="field" id="name" name="name" type="text" <%= group == null ? "" : "value=" + group.getName()%> />
+        <input class="field" id="name" name="name" type="text" <%= group == null ? "" : "value='" + group.getName() + "'"%> />
         <br/>
-        <input size='0' type="hidden" readonly='readonly' class='install' name='id' id="id" value=<%=group==null?"\"-1\"":"\""+group.getId()+"\""%> />
+        <input size='0' type="hidden" readonly='readonly' class='install' name='id' id="id" value="<%=group==null? "-1" : group.getId()%>" />
         <button>Submit</button>
     </div>
 </form>

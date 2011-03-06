@@ -34,13 +34,13 @@
 <div class="login">
     <form action="library/saveHourType.jsp" method="post" name="hourType">
         <label for="name">Name:</label>
-        <input class="field" id="name" name="<%=HourType.Field.name%>" type="text" <%= hourType == null ? "" : "value=" + hourType.getName()%> />
+        <input class="field" id="name" name="<%=HourType.Field.name%>" type="text" <%= hourType == null ? "" : "value='" + hourType.getName() + "'"%> />
         <br/>
         <label for="paid"> Paid:</label>
         <input class="field" id="paid" name="<%=HourType.Field.paid%>" type="checkbox" value="TRUE" <%=hourType == null || hourType != null && hourType.getPaid() ? "checked=\"yes\"" : ""%> />
         <br/>
         <label for="defaultFlag">Default:</label>
-        <input class="field" id="defaultFlag" name="<%=HourType.Field.defaultFlag%>" type="checkbox" value="TRUE"  <%=hourType == null || hourType != null && hourType.getDefaultFlag() ? "checked=\"yes\"" : ""%> />
+        <input class="field" id="defaultFlag" name="<%=HourType.Field.defaultFlag%>" type="checkbox" value="TRUE"  <%=hourType != null && hourType.getDefaultFlag() ? "checked=\"yes\"" : ""%> />
         <br/>
         <input size='0' type="hidden" readonly='readonly' class='install' name='<%=HourType.Field.id%>' id="id" value=<%=hourType ==null?"\"-1\"":"\""+ hourType.getId()+"\""%>/>
         <br/>
