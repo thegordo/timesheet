@@ -47,4 +47,16 @@ public class HoursManager {
         em.getTransaction().commit();
         return hours;
     }
+
+    public void removeByID(int id) {
+        em.getTransaction().begin();
+        Hours hours = getHoursByID(id);
+        em.remove(hours);
+        em.getTransaction().commit();
+    }
+
+    public Hours getHoursByID(int id) {
+        TypedQuery<Hours> query = em.createQuery("SELECT c from Hours c where c.id =" + id, Hours.class);
+        return query.getSingleResult();
+    }
 }

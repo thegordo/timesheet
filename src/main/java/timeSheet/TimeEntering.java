@@ -67,13 +67,13 @@ public class TimeEntering {
                         temp.setTime(tempDate);
                         int tempDay = temp.get(Calendar.DAY_OF_MONTH);
                         if (tempDay >= period.getStart().get(Calendar.DAY_OF_MONTH) && tempDay <= period.getEnd().get(Calendar.DAY_OF_MONTH)) {
-                            tableRow.append("<a href='library/deleteHours.php?id=").append(hours.getId()).append("'>Delete</a><br />");
+                            tableRow.append("<a href='library/deleteHours.jsp?id=").append(hours.getId()).append("'>Delete</a><br />");
                         }
                         if (!hours.getEmployeeApproval() && sessionEmployee.getId() == employee.getId()) {
-                            tableRow.append("<a href='library/saveApproval.php?id=").append(hours.getId()).append("&manager=false'>approve</a><br />");
+                            tableRow.append("<a href='library/saveApproval.jsp?id=").append(hours.getId()).append("&manager=false'>approve</a><br />");
                         }
                         if (!hours.getManagerApproval() && sessionEmployee.getId() != employee.getId() && sessionEmployee.getRole().isTimeManager()) {
-                            tableRow.append("<a href='library/saveApproval.php?id=").append(hours.getId()).append("&manager=true'>approve</a><br />");
+                            tableRow.append("<a href='library/saveApproval.jsp?id=").append(hours.getId()).append("&manager=true'>approve</a><br />");
                         }
                     }
                 } else {
