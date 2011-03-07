@@ -24,7 +24,7 @@
 <head></head>
 <body>
 <script type="text/javascript">
-    window.history.back();
+    window.location.replace("../<%=request.getParameter("location")%>");
 </script>
 </body>
 </html>

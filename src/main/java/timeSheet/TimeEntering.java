@@ -25,18 +25,18 @@ public class TimeEntering {
     }
 
 
-    public String getTimeTable() {
+    public String getTimeTable(String location) {
         StringBuilder tableString = new StringBuilder();
         tableString.append("<table>\n<tr >\n<td > Sunday </td >\n<td > Monday </td >\n<td > Tuesday </td >\n<td > Wednesday </td >\n" );
         tableString.append("<td > Thursday </td >\n<td > Friday </td >\n<td > Saturday </td >\n<td class=\"total\" > Total </td >\n</tr > ");
-        tableString.append(getWeek(0));
-        tableString.append(getWeek(1));
-        tableString.append(getWeek(2));
+        tableString.append(getWeek(0, location));
+        tableString.append(getWeek(1, location));
+        tableString.append(getWeek(2, location));
         tableString.append("</table>");
         return tableString.toString();
     }
 
-    private String getWeek(int weekNum) {
+    private String getWeek(int weekNum, String location) {
         HoursManager hoursManager = new HoursManager();
         StringBuilder tableRow = new StringBuilder();
         tableRow.append("<tr>\n");
@@ -67,13 +67,13 @@ public class TimeEntering {
                         temp.setTime(tempDate);
                         int tempDay = temp.get(Calendar.DAY_OF_MONTH);
                         if (tempDay >= period.getStart().get(Calendar.DAY_OF_MONTH) && tempDay <= period.getEnd().get(Calendar.DAY_OF_MONTH)) {
-                            tableRow.append("<a href='library/deleteHours.jsp?id=").append(hours.getId()).append("'>Delete</a><br />");
+                            tableRow.append("<a href='library/deleteHours.jsp?id=").append(hours.getId()).append("&location=").append(location).append("'>Delete</a><br />");
                         }
                         if (!hours.getEmployeeApproval() && sessionEmployee.getId() == employee.getId()) {
-                            tableRow.append("<a href='library/saveApproval.jsp?id=").append(hours.getId()).append("&manager=false'>approve</a><br />");
+                            tableRow.append("<a href='library/saveApproval.jsp?id=").append(hours.getId()).append("&manager=false&location=").append(location).append("'>approve</a><br />");
                         }
                         if (!hours.getManagerApproval() && sessionEmployee.getId() != employee.getId() && sessionEmployee.getRole().isTimeManager()) {
-                            tableRow.append("<a href='library/saveApproval.jsp?id=").append(hours.getId()).append("&manager=true'>approve</a><br />");
+                            tableRow.append("<a href='library/saveApproval.jsp?id=").append(hours.getId()).append("&manager=true&location=").append(location).append("'>approve</a><br />");
                         }
                     }
                 } else {

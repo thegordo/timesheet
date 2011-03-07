@@ -14,7 +14,7 @@ hourManager.removeByID(Integer.parseInt(request.getParameter("id")));
 <html>
 <body>
 <script type="text/javascript">
-    window.history.back();
+    window.location.replace("../<%=request.getParameter("location")%>");
 </script>
 </body>
 </html>

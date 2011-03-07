@@ -3,11 +3,11 @@
 <%@ page import="timeSheet.database.entity.Employee" %>
 <%@ page import="timeSheet.database.entity.Hours" %>
 <%@ page import="timeSheet.database.manager.EmployeeManager" %>
+<%@ page import="timeSheet.database.manager.HourTypeManager" %>
+<%@ page import="timeSheet.database.manager.HoursManager" %>
 <%@ page import="java.text.ParseException" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="timeSheet.database.manager.HourTypeManager" %>
-<%@ page import="timeSheet.database.manager.HoursManager" %>
 <%--
   User: John Lawrence
   Date: 3/5/11
@@ -19,6 +19,7 @@
 
     hoursWorked.setDateEntered(new Date());
     hoursWorked.setEmployeeApproval(true);
+    hoursWorked.setManagerApproval(false);
     double hours = Double.parseDouble(request.getParameter("hours"));
     hoursWorked.setHours(hours);
     String day = request.getParameter("date");
@@ -45,7 +46,7 @@
     }
     hoursWorked.setEmployee(employee);
     hoursWorked.setEnteredByEmployee(sessionEmployee);
-    if(hoursWorked.isEnteredByEmployee()) { // We want to make sure that this is known as not being approved by the employee.
+    if(!hoursWorked.isEnteredByEmployee()) { // We want to make sure that this is known as not being approved by the employee.
         hoursWorked.setEmployeeApproval(false);
         hoursWorked.setManagerApproval(true);
     }
@@ -70,7 +71,7 @@
         out.print("alert('Unable to save the hours.');");
     }
     %>
-    window.history.back();
+    window.location.replace("../<%=request.getParameter("location")%>");
 </script>
 <a href="../dashboard.jsp">Go back to the Dashboard here.</a>
 </body>

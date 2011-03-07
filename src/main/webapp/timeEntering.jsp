@@ -61,6 +61,7 @@
             <label for="hours">Hours worked:</label><input class="field" id="hours" name="hours" type="text" tabindex="3"><br/>
             <input type="hidden" name="employeeID" value="<%=employee.getId()%>">
             <input type="hidden" name="enteringID" value="<%=sessionId%>">
+            <input type="hidden" name="location" value="timeEntering.jsp">
         </div>
         <button tabindex="4">Submit Hours</button>
         <br/>
@@ -77,7 +78,7 @@
     </div>
     <br/>
     <%
-        out.println(lib.getTimeTable());
+        out.println(lib.getTimeTable("timeEntering.jsp"));
         out.println(lib.getPayPeriodTotals());
     %>
     <% out.println(UtilWeb.getFooter());%>

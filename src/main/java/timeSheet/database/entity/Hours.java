@@ -38,10 +38,10 @@ public class Hours extends BaseObject {
     private Employee enteredByEmployee;
 
     @Column
-    private Boolean employeeApproval;
+    private boolean employeeApproval;
 
     @Column
-    private Boolean managerApproval;
+    private boolean managerApproval;
 
     public int getId() {
         return id;
@@ -99,26 +99,23 @@ public class Hours extends BaseObject {
         this.enteredByEmployee = enteredByEmployee;
     }
 
-    public Boolean getEmployeeApproval() {
+    public boolean getEmployeeApproval() {
         return employeeApproval;
     }
 
-    public void setEmployeeApproval(Boolean employeeApproval) {
+    public void setEmployeeApproval(boolean employeeApproval) {
         this.employeeApproval = employeeApproval;
     }
 
-    public Boolean getManagerApproval() {
+    public boolean getManagerApproval() {
         return managerApproval;
     }
 
-    public void setManagerApproval(Boolean managerApproval) {
+    public void setManagerApproval(boolean managerApproval) {
         this.managerApproval = managerApproval;
     }
 
     public boolean isEnteredByEmployee() {
-        if (employee != null && enteredByEmployee != null) {
-            return employee.getId() == enteredByEmployee.getId();
-        }
-        return false;
+        return employee != null && enteredByEmployee != null && employee.getId() == enteredByEmployee.getId();
     }
 }
