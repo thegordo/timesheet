@@ -39,4 +39,12 @@ public class HoursManager {
         query.setParameter("end", period.getEndDate());
         return (Double) query.getSingleResult();
     }
+
+    public Hours saveHours(Hours hours) {
+        em.getTransaction().begin();
+        hours = em.merge(hours);
+        em.persist(hours);
+        em.getTransaction().commit();
+        return hours;
+    }
 }

@@ -34,8 +34,8 @@ public class Hours extends BaseObject {
     @Column
     private Double hours;
 
-    @Column
-    private Boolean enteredByEmployee;
+    @ManyToOne(targetEntity = Employee.class, cascade = CascadeType.PERSIST)
+    private Employee enteredByEmployee;
 
     @Column
     private Boolean employeeApproval;
@@ -91,11 +91,11 @@ public class Hours extends BaseObject {
         this.hours = hours;
     }
 
-    public Boolean getEnteredByEmployee() {
+    public Employee getEnteredByEmployee() {
         return enteredByEmployee;
     }
 
-    public void setEnteredByEmployee(Boolean enteredByEmployee) {
+    public void setEnteredByEmployee(Employee enteredByEmployee) {
         this.enteredByEmployee = enteredByEmployee;
     }
 
@@ -113,5 +113,12 @@ public class Hours extends BaseObject {
 
     public void setManagerApproval(Boolean managerApproval) {
         this.managerApproval = managerApproval;
+    }
+
+    public boolean isEnteredByEmployee() {
+        if (employee != null && enteredByEmployee != null) {
+            return employee.getId() == enteredByEmployee.getId();
+        }
+        return false;
     }
 }

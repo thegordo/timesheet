@@ -62,4 +62,8 @@ public class HourTypeManager {
         }
         return builder.toString();
     }
+
+    public HourType getDefaultType() {
+        return manager.getEntityManager().createQuery("Select c from HourType c where c.defaultFlag = true", HourType.class).getSingleResult();
+    }
 }

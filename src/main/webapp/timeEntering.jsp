@@ -49,7 +49,8 @@
 
     <h2>Report time worked</h2>
     <%
-        if(employee.getId() == ((Employee) session.getAttribute(SessionConst.employee.name())).getId()) {
+        int sessionId = ((Employee) session.getAttribute(SessionConst.employee.name())).getId();
+        if(employee.getId() == sessionId) {
             out.println("<p>You can only report time for the current pay period.</p>");
         }
     %>
@@ -58,8 +59,8 @@
             <label for="date">Day:</label><select class="field" id="date" name='date' tabindex="1"><%=period.getPayPeriodSelections()%></select><br/>
             <label for="type">Type:</label><select class="field" id="type" name="type" tabindex="2"><%=hourTypeManager.getOptions(false)%></select> <br/>
             <label for="hours">Hours worked:</label><input class="field" id="hours" name="hours" type="text" tabindex="3"><br/>
-            <input type="hidden" name="employeeID" value="<?PHP echo $employeeTimeID; ?>">
-            <input type="hidden" name="enteringID" value="<?PHP echo $_SESSION['userID']; ?>">
+            <input type="hidden" name="employeeID" value="<%=employee.getId()%>">
+            <input type="hidden" name="enteringID" value="<%=sessionId%>">
         </div>
         <button tabindex="4">Submit Hours</button>
         <br/>
