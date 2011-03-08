@@ -25,7 +25,7 @@
     try {
         manager.saveEmployee(employee);
 %>
-<script type="text/javascript">window.location.replace("../manageEmployees.jsp");</script>
+<script type="text/javascript">window.location.replace("../dashboard.jsp");</script>
 <%
     } catch (PersistenceException e) {
         out.println(e.getMessage());
