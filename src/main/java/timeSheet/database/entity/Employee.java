@@ -171,6 +171,21 @@ public class Employee extends BaseObject {
         this.id = id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        return userName.equals(employee.userName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return userName != null ? userName.hashCode() : 0;
+    }
 
     public enum Field {
         id,

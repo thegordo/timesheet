@@ -125,7 +125,7 @@ function doTimePeriodGeneration() {
 }
 
 function getCalendarForEmployee() {
-    var url = "library/ajaxGetTimePeriodCalendar.php";
+    var url = "library/ajaxGetTimePeriodCalendar.jsp";
     var parameters = "empID=" + document.getElementById("employeeID").value;
     var date = document.getElementById("fullDate").value;
     if (date != "") {

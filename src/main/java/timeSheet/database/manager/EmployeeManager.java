@@ -43,4 +43,33 @@ public class EmployeeManager {
     public Employee saveEmployee(Employee employee) {
         return manager.persist(employee);
     }
+
+    public String getEmployeeOptions(Employee sessionEmployee, Employee chosen) {
+        List<Employee> employeeList;
+        if (sessionEmployee.isAdmin()) {
+            employeeList = getAllActiveHourlyEmployees();
+        } else {
+            employeeList = getEmployeesForGroupNonSalaried(sessionEmployee);
+        }
+        StringBuilder options = new StringBuilder();
+        for(Employee employee : employeeList){
+            if (employee.equals(chosen)) {
+                options.append("<option value='").append(employee.getId()).append("' selected>").append(employee.getName()).append("</option>");
+            } else {
+                options.append("<option value='").append(employee.getId()).append("'>").append(employee.getName()).append("</option>");
+            }
+        }
+        return options.toString();
+    }
+
+    private List<Employee> getEmployeesForGroupNonSalaried(Employee sessionEmployee) {
+        TypedQuery<Employee> query = em.createQuery("Select c from Employee c where c.group = :group and c.isSalary = false", Employee.class);
+        query.setParameter("group", sessionEmployee.getGroup());
+        return query.getResultList();
+    }
+
+    private List<Employee> getAllActiveHourlyEmployees() {
+        TypedQuery<Employee> query = em.createQuery("Select c from Employee c where c.isSalary = false", Employee.class);
+        return query.getResultList();
+    }
 }

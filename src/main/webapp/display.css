@@ -13,6 +13,12 @@ div.login {
     width: 50%;
 }
 
+div.time {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
 div.menu {
     text-align: right;
 }

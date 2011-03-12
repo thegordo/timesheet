@@ -76,4 +76,8 @@ public class UtilWeb {
         }
         return simpleDateFormat;
     }
+
+    public static Employee getSessionEmployee(HttpSession session) {
+        return (Employee) session.getAttribute(SessionConst.employee.name());
+    }
 }

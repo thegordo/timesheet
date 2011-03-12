@@ -71,7 +71,7 @@
         out.print("alert('Unable to save the hours.');");
     }
     %>
-    window.location.replace("../<%=request.getParameter("location")%>");
+    window.location.replace("../<%=request.getParameter("location")%>?empID=<%=employee.getId()%>");
 </script>
 <a href="../dashboard.jsp">Go back to the Dashboard here.</a>
 </body>
