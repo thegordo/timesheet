@@ -11,19 +11,21 @@ import java.util.Date;
 @Entity
 @SequenceGenerator(name="employeeGen", allocationSize = 1)
 public class Employee extends BaseObject {
-    @Column(length = 256)
+    public static final int STRING_LENGTH = 256;
+
+    @Column(length = STRING_LENGTH)
     private String name;
 
-    @Column(length = 256)
+    @Column(length = STRING_LENGTH, unique = true)
     private String userName;
 
-    @Column(length = 256)
+    @Column(length = STRING_LENGTH)
     private String password;
 
-    @Column(length = 256)
+    @Column(length = STRING_LENGTH)
     private String emailAddress;
 
-    @Column(length = 256)
+    @Column(length = STRING_LENGTH)
     private String fileNumber;
 
     @Temporal(TemporalType.DATE)
@@ -60,7 +62,7 @@ public class Employee extends BaseObject {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = chopLength(name, STRING_LENGTH);
     }
 
     public String getUserName() {
@@ -68,7 +70,7 @@ public class Employee extends BaseObject {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.userName = chopLength(userName, STRING_LENGTH);
     }
 
     public String getPassword() {
@@ -76,7 +78,7 @@ public class Employee extends BaseObject {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = chopLength(password, STRING_LENGTH);
     }
 
     public String getEmailAddress() {
@@ -84,7 +86,7 @@ public class Employee extends BaseObject {
     }
 
     public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+        this.emailAddress = chopLength(emailAddress, STRING_LENGTH);
     }
 
     public String getFileNumber() {
@@ -92,7 +94,7 @@ public class Employee extends BaseObject {
     }
 
     public void setFileNumber(String fileNumber) {
-        this.fileNumber = fileNumber;
+        this.fileNumber = chopLength(fileNumber, STRING_LENGTH);
     }
 
     public Date getHireDate() {
@@ -100,6 +102,7 @@ public class Employee extends BaseObject {
     }
 
     public void setHireDate(Date hireDate) {
+        checkDates(hireDate, fullTimeDate);
         this.hireDate = hireDate;
     }
 
@@ -108,6 +111,7 @@ public class Employee extends BaseObject {
     }
 
     public void setFullTimeDate(Date fullTimeDate) {
+        checkDates(hireDate, fullTimeDate);
         this.fullTimeDate = fullTimeDate;
     }
 
@@ -173,8 +177,9 @@ public class Employee extends BaseObject {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Employee employee = (Employee) o;
 
@@ -184,7 +189,7 @@ public class Employee extends BaseObject {
 
     @Override
     public int hashCode() {
-        return userName != null ? userName.hashCode() : 0;
+        return userName.hashCode();
     }
 
     public enum Field {
@@ -203,5 +208,13 @@ public class Employee extends BaseObject {
         ptoAllowed,
         salaried,
         wage,
+    }
+
+    private void checkDates(Date hireDate, Date fullTimeDate) {
+        if (fullTimeDate != null && hireDate != null) {
+            if (fullTimeDate.before(hireDate)) {
+                throw new IllegalArgumentException("The full time date cannot be before the hire date.");
+            }
+        }
     }
 }

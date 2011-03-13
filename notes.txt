@@ -1,7 +1,5 @@
 Things left todo:
 
--Create Manage time page.
--Create Enter time page.
 -Create Reports page.
 -Create ADP Report/Export
 -Create Other reports

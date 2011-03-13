@@ -17,7 +17,9 @@ import java.util.List;
 })
 @SequenceGenerator(name = "groupGen", allocationSize = 1)
 public class EmployeeGroup extends BaseObject {
-    @Column(length = 256, unique = true)
+    public static final int STRING_LENGTH = 256;
+
+    @Column(length = STRING_LENGTH, unique = true)
     public String name;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "group")
@@ -43,7 +45,7 @@ public class EmployeeGroup extends BaseObject {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = chopLength(name, STRING_LENGTH);
     }
 
     public void addEmployee(Employee emp) {
@@ -56,6 +58,23 @@ public class EmployeeGroup extends BaseObject {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        EmployeeGroup group = (EmployeeGroup) o;
+        return id == group.id && name.equals(group.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + id;
+        return result;
     }
 
     public enum Field {

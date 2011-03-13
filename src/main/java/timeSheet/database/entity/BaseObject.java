@@ -12,4 +12,11 @@ import javax.persistence.MappedSuperclass;
 public abstract class BaseObject {
     public abstract int getId();
     public abstract void setId(int id);
+
+    protected String chopLength(String string, int length) {
+        if (string.length() < length) {
+            return string;
+        }
+        return string.substring(0, length);
+    }
 }
