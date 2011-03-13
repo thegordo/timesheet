@@ -66,7 +66,7 @@ public class TimeEntering {
                         Calendar temp = Calendar.getInstance();
                         temp.setTime(tempDate);
                         int tempDay = temp.get(Calendar.DAY_OF_MONTH);
-                        if (tempDay >= period.getStart().get(Calendar.DAY_OF_MONTH) && tempDay <= period.getEnd().get(Calendar.DAY_OF_MONTH)) {
+                        if (tempDay >= period.getStart().get(Calendar.DAY_OF_MONTH) && tempDay <= period.getEnd().get(Calendar.DAY_OF_MONTH) || sessionEmployee.getRole().isTimeManager()) {
                             tableRow.append("<a href='library/deleteHours.jsp?id=").append(hours.getId()).append("&location=").append(location).append("'>Delete</a><br />");
                         }
                         if (!hours.getEmployeeApproval() && sessionEmployee.getId() == employee.getId()) {
