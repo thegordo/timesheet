@@ -116,6 +116,6 @@ public class Hours extends BaseObject {
     }
 
     public boolean isEnteredByEmployee() {
-        return employee != null && enteredByEmployee != null && employee.getId() == enteredByEmployee.getId();
+        return employee != null && enteredByEmployee != null && employee.equals(enteredByEmployee);
     }
 }

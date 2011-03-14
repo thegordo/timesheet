@@ -10,10 +10,12 @@ import javax.persistence.*;
 @Entity
 @SequenceGenerator(name = "settingGen", allocationSize = 1)
 public class Setting extends BaseObject {
-    @Column(length = 256)
+    public static final int STRING_LENGTH = 256;
+
+    @Column(length = STRING_LENGTH)
     private String name;
 
-    @Column(length = 256)
+    @Column(length = STRING_LENGTH)
     private String value;
 
     @Id
@@ -25,7 +27,7 @@ public class Setting extends BaseObject {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = chopLength(name, STRING_LENGTH);
     }
 
     public String getValue() {
@@ -33,7 +35,7 @@ public class Setting extends BaseObject {
     }
 
     public void setValue(String value) {
-        this.value = value;
+        this.value = chopLength(value, STRING_LENGTH);
     }
 
     public int getId() {

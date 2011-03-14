@@ -66,4 +66,19 @@ public class HourType extends BaseObject {
         paid,
         defaultFlag,
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        HourType hourType = (HourType) o;
+        return name.equals(hourType.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }
