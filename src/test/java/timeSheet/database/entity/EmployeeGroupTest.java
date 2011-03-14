@@ -36,7 +36,7 @@ public class EmployeeGroupTest {
         String name = "fred";
         group.setName(name);
         assertEquals(name, group.getName());
-        name = TestUtil.getStringOfLength(EmployeeGroup.STRING_LENGTH + 1);
+        name = UtilJUnit.getStringOfLength(EmployeeGroup.STRING_LENGTH + 1);
         group.setName(name);
         assertEquals(EmployeeGroup.STRING_LENGTH, group.getName().length());
     }

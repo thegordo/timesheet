@@ -5,7 +5,7 @@ package timeSheet.database.entity;
  * Date: 3/13/11
  * Time: 12:58 AM
  */
-public class TestUtil {
+public class UtilJUnit {
     public static String getStringOfLength(int length) {
         StringBuilder build = new StringBuilder();
         for(int index = 0; index < length; index ++) {

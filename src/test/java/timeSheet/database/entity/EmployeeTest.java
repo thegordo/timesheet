@@ -26,7 +26,7 @@ public class EmployeeTest {
         String name = "fred";
         employee.setName(name);
         assertEquals(name, employee.getName());
-        name = TestUtil.getStringOfLength(Employee.STRING_LENGTH + 1);
+        name = UtilJUnit.getStringOfLength(Employee.STRING_LENGTH + 1);
         employee.setName(name);
         assertEquals(Employee.STRING_LENGTH, employee.getName().length());
     }
@@ -37,7 +37,7 @@ public class EmployeeTest {
         String name = "fred";
         employee.setUserName(name);
         assertEquals(name, employee.getUserName());
-        name = TestUtil.getStringOfLength(Employee.STRING_LENGTH + 1);
+        name = UtilJUnit.getStringOfLength(Employee.STRING_LENGTH + 1);
         employee.setName(name);
         assertEquals(Employee.STRING_LENGTH, employee.getName().length());
     }
@@ -48,7 +48,7 @@ public class EmployeeTest {
         String name = "fred";
         employee.setPassword(name);
         assertEquals(name, employee.getPassword());
-        name = TestUtil.getStringOfLength(Employee.STRING_LENGTH + 1);
+        name = UtilJUnit.getStringOfLength(Employee.STRING_LENGTH + 1);
         employee.setName(name);
         assertEquals(Employee.STRING_LENGTH, employee.getName().length());
     }
@@ -59,7 +59,7 @@ public class EmployeeTest {
         String name = "fred";
         employee.setEmailAddress(name);
         assertEquals(name, employee.getEmailAddress());
-        name = TestUtil.getStringOfLength(Employee.STRING_LENGTH + 1);
+        name = UtilJUnit.getStringOfLength(Employee.STRING_LENGTH + 1);
         employee.setName(name);
         assertEquals(Employee.STRING_LENGTH, employee.getName().length());
     }
@@ -70,7 +70,7 @@ public class EmployeeTest {
         String name = "fred";
         employee.setFileNumber(name);
         assertEquals(name, employee.getFileNumber());
-        name = TestUtil.getStringOfLength(Employee.STRING_LENGTH + 1);
+        name = UtilJUnit.getStringOfLength(Employee.STRING_LENGTH + 1);
         employee.setName(name);
         assertEquals(Employee.STRING_LENGTH, employee.getName().length());
     }

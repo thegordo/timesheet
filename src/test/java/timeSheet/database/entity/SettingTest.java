@@ -25,7 +25,7 @@ public class SettingTest {
         String name = "fred";
         setting.setName(name);
         assertEquals(name, setting.getName());
-        name = TestUtil.getStringOfLength(Setting.STRING_LENGTH + 1);
+        name = UtilJUnit.getStringOfLength(Setting.STRING_LENGTH + 1);
         setting.setName(name);
         assertEquals(Setting.STRING_LENGTH, setting.getName().length());
     }
@@ -36,7 +36,7 @@ public class SettingTest {
         String name = "fred";
         setting.setValue(name);
         assertEquals(name, setting.getValue());
-        name = TestUtil.getStringOfLength(Setting.STRING_LENGTH + 1);
+        name = UtilJUnit.getStringOfLength(Setting.STRING_LENGTH + 1);
         setting.setValue(name);
         assertEquals(Setting.STRING_LENGTH, setting.getValue().length());
     }
