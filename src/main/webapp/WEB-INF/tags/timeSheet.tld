@@ -22,6 +22,11 @@
         <tag-class>timeSheet.tags.FooterTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+    <tag>
+        <name>header</name>
+        <tag-class>timeSheet.tags.HeaderTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
 
 
     <!-- Invoke 'Generate' action to add tags or functions -->

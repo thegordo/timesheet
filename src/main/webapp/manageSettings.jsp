@@ -28,7 +28,7 @@
 </head>
 <body>
 <% out.println(UtilWeb.getMenu(request));%>
-<h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
+<timeSheet:header/>
 <h2>System Settings Management</h2>
 <div class="login">
     <form action="manageSettings.jsp" method="post">

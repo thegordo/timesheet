@@ -35,7 +35,7 @@
     }
 %>
 <% out.println(UtilWeb.getMenu(request));%>
-<h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
+<timeSheet:header/>
 <h2>Manage time worked for employee</h2>
 
 <div class="login">

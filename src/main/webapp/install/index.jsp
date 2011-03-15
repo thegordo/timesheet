@@ -1,6 +1,6 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.Install" %>
 <%@ page import="timeSheet.SessionConst" %>
-<%@ page import="timeSheet.UtilWeb" %>
 <%--
   Created by IntelliJ IDEA.
   User: john
@@ -35,6 +35,6 @@
                 </div>
             </form>
         </div>
-        <% out.println(UtilWeb.getFooter()); %>
+        <timeSheet:footer/>
     </body>
 </html>

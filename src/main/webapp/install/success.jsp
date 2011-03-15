@@ -1,6 +1,6 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.Install" %>
 <%@ page import="timeSheet.SessionConst" %>
-<%@ page import="timeSheet.UtilWeb" %>
 <%
     Install install = (Install) session.getAttribute(SessionConst.install.toString());
     if (install == null) {
@@ -29,6 +29,6 @@
 <div class="login">
     <p>Congratulations, PaySystem has been successfully installed.  Please <a href="../index.jsp">login</a>.</p>
 </div>
-<% out.println(UtilWeb.getFooter()); %>
+<timeSheet:footer />
 </body>
 </html>

@@ -30,7 +30,7 @@
 		<title>PaySystem</title>
 	</head>
 	<body>
-		<h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
+		<timeSheet:header />
         <timeSheet:error error="<%=error%>" />
 		<div class="login">
 			<form action="<%=request.getRequestURI()%>" method="post">

@@ -1,6 +1,6 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.Install" %>
 <%@ page import="timeSheet.SessionConst" %>
-<%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.util.SHA" %>
 <%--
   User: John Lawrence
@@ -53,6 +53,6 @@
         <input class="submit" type="submit" value="Install">
     </div>
 </form>
-<% out.println(UtilWeb.getFooter()); %>
+<timeSheet:footer />
 </body>
 </html>

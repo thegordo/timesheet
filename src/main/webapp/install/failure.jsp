@@ -1,4 +1,4 @@
-<%@ page import="timeSheet.UtilWeb" %>
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%--
   Created by IntelliJ IDEA.
   User: john
@@ -21,6 +21,6 @@
 
 <p>Please correct these errors and try again.</p>
 <a href="index.jsp">Go back to the install Page.</a>
-<%out.println(UtilWeb.getFooter());%>
+<timeSheet:footer />
 </body>
 </html>

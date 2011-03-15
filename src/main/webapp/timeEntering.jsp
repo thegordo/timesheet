@@ -46,7 +46,7 @@
 </head>
 <body>
     <% out.println(UtilWeb.getMenu(request));%>
-    <h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
+    <timeSheet:header/>
 
     <h2>Report time worked</h2>
     <%
