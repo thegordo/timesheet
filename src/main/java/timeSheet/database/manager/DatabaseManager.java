@@ -85,6 +85,7 @@ public class DatabaseManager {
     }
 
     public <T extends BaseObject> T persist(T object) {
+        ensureConnection();
         if (object.getId() < 1) {
             return persistNew(object);
         } else {
@@ -125,6 +126,7 @@ public class DatabaseManager {
     }
 
     public <T> T getSingleResult(TypedQuery<T> query) {
+        ensureConnection();
         List<T> list = query.getResultList();
         if (list.size() > 0) {
             return list.get(0);
@@ -134,6 +136,7 @@ public class DatabaseManager {
     }
 
     public void delete(Object object) {
+        ensureConnection();
         try {
             em.getTransaction().begin();
             em.remove(object);
