@@ -1,3 +1,4 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.entity.Employee" %>
 <%@ page import="timeSheet.database.manager.EmployeeManager" %>
@@ -55,6 +56,6 @@
 </div>
 <br />
 <div id="calendar" class="time"></div>
-<% out.println(UtilWeb.getFooter());%>
+<timeSheet:footer />
 </body>
 </html>

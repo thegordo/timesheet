@@ -1,3 +1,4 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.entity.HourType" %>
 <%@ page import="timeSheet.database.manager.HourTypeManager" %>
@@ -41,6 +42,6 @@
 <div class="login">
     <a href="editHourType.jsp">Add</a>
 </div>
-<% out.println(UtilWeb.getFooter());%>
+<timeSheet:footer />
 </body>
 </html>

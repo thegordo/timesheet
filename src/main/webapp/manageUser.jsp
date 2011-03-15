@@ -1,3 +1,4 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.SessionConst" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.entity.Employee" %>
@@ -38,6 +39,6 @@
 
     <%=employee == null ? "" : "<button onclick=\"changePassword(" + employee.getId() + ");\" id = \"changePWButton\">Change Password</button>"%>
     <div id="changePassword"></div>
-    <% out.println(UtilWeb.getFooter());%>
+    <timeSheet:footer/>
 </body>
 </html>

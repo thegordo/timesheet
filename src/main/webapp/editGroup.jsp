@@ -1,3 +1,4 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.entity.EmployeeGroup" %>
 <%@ page import="timeSheet.database.manager.GroupManager" %>
@@ -42,6 +43,6 @@
     </div>
 </form>
 <a href='manageGroups.jsp'>Cancel</a><br/>
-<% out.println(UtilWeb.getFooter());%>
+<timeSheet:footer />
 </body>
 </html>

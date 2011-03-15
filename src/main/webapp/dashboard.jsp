@@ -1,3 +1,4 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.Dashboard" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%--
@@ -23,6 +24,6 @@
 </h2>
 
 <div id="content"><%out.println(dashboard.getMenu()); %></div>
-<% out.println(UtilWeb.getFooter());%>
+<timeSheet:footer />
 </body>
 </html>

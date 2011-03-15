@@ -1,3 +1,4 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%@ page import="timeSheet.database.DBType" %>
 <%@ page import="timeSheet.database.manager.SettingsManager" %>
@@ -68,6 +69,6 @@
         <input type="submit" value="Save" class="submit">
     </form>
 </div>
-<% out.println(UtilWeb.getFooter());%>
+<timeSheet:footer />
 </body>
 </html>

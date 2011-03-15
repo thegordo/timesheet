@@ -1,3 +1,4 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.PayPeriod" %>
 <%@ page import="timeSheet.SessionConst" %>
 <%@ page import="timeSheet.TimeEntering" %>
@@ -50,9 +51,9 @@
     <h2>Report time worked</h2>
     <%
         int sessionId = ((Employee) session.getAttribute(SessionConst.employee.name())).getId();
-        if(employee.getId() == sessionId) {
-            out.println("<p>You can only report time for the current pay period.</p>");
-        }
+        if(employee.getId() == sessionId) {%>
+            <p>You can only report time for the current pay period.</p>
+      <%}
     %>
     <form action="library/saveTime.jsp" method="post">
         <div class="login">
@@ -81,6 +82,6 @@
         out.println(lib.getTimeTable("timeEntering.jsp"));
         out.println(lib.getPayPeriodTotals());
     %>
-    <% out.println(UtilWeb.getFooter());%>
+    <timeSheet:footer />
 </body>
 </html>

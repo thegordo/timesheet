@@ -4,9 +4,4 @@
   Time: 1:03 AM
 --%>
 <% session.invalidate(); %>
-
-<html>
-    <head>
-        <script type="text/javascript" >window.location.replace( "index.jsp");</script>
-    </head>
-</html>
+<jsp:forward page="index.jsp" />
