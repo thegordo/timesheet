@@ -1,5 +1,24 @@
+<%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+
+<jsp:useBean id="creds" class="timeSheet.form.Credentials" scope="request"/>
+<%
+    // If process is true, attempt to validate and process the form
+    String error = null;
+    if ("true".equals(request.getParameter("process"))) {
+%>
+<jsp:setProperty name="creds" property="*"/>
+<%
+        // Attempt to process the form
+        error = creds.process(session);
+        if (error == null) {
+%>
+<jsp:forward page="dashboard.jsp"/>
+<%
+        }
+    }
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,8 +34,9 @@
 	</head>
 	<body>
 		<h1><%=UtilWeb.getCompanyName()%> Pay System</h1>
+        <timeSheet:error error="<%=error%>" />
 		<div class="login">
-			<form action="login.jsp" method="post">
+			<form action="<%=request.getRequestURI()%>" method="post">
 				<label for="userName">User Name:</label>
 				<input type="text" class="input" name="userName" id="userName" >
 				<br /><br />
@@ -24,10 +44,9 @@
 				<input type="password" class="input" name="password" id="password" >
 				<br /><br />
 				<input class="submit" type="submit" value="Login">
+                <input type="HIDDEN" name="process" value="true">
 			</form>
 		</div>
-		<div id="footer">
-			<h6><br />&copy; 2010 by John Lawrence. <br/>Licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GPL</a></h6>
-		</div>
+        <timeSheet:footer />
 	</body>
 </html>

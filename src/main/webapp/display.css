@@ -13,6 +13,13 @@ div.login {
     width: 50%;
 }
 
+div.error {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    color:red;
+}
+
 div.time {
     margin-left: auto;
     margin-right: auto;
