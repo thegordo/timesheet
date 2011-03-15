@@ -2,15 +2,13 @@
 <%@ page import="timeSheet.UtilWeb" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<jsp:useBean id="creds" class="timeSheet.form.Credentials" scope="request"/>
+<jsp:useBean id="creds" class="timeSheet.form.Credentials" scope="request">
+    <jsp:setProperty name="creds" property="*"/>
+</jsp:useBean>
 <%
     // If process is true, attempt to validate and process the form
     String error = null;
     if ("true".equals(request.getParameter("process"))) {
-%>
-<jsp:setProperty name="creds" property="*"/>
-<%
-        // Attempt to process the form
         error = creds.process(session);
         if (error == null) {
 %>
@@ -20,8 +18,7 @@
     }
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
         <% UtilWeb.checkInstall(out); %>
