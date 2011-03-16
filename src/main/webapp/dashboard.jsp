@@ -1,5 +1,4 @@
 <%@ taglib prefix="timeSheet" uri="/WEB-INF/tags/timeSheet.tld" %>
-<%@ page import="timeSheet.Dashboard" %>
 <%@ page import="timeSheet.UtilWeb" %>
 <%--
   User: John Lawrence
@@ -10,20 +9,16 @@
 <html>
 <head>
     <% UtilWeb.checkSession(session, out, false, false); %>
-    <% Dashboard dashboard = new Dashboard(session); %>
     <title>PaySystem - Dashboard</title>
     <style type="text/css">
         @import url('display.css');
     </style>
 </head>
 <body>
-<% out.println(UtilWeb.getMenu(request));%>
-<timeSheet:header/>
-
-<h2>Dashboard - <%=dashboard.getName()%>
-</h2>
-
-<div id="content"><%out.println(dashboard.getMenu()); %></div>
+<timeSheet:menu />
+<timeSheet:header />
+<h2>Dashboard - <%=UtilWeb.getSessionEmployee(session).getName()%></h2>
+<timeSheet:dashMenu />
 <timeSheet:footer />
 </body>
 </html>

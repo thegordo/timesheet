@@ -34,7 +34,7 @@
         employee = employeeManager.getEmployee(Integer.parseInt(empID));
     }
 %>
-<% out.println(UtilWeb.getMenu(request));%>
+<timeSheet:menu/>
 <timeSheet:header/>
 <h2>Manage time worked for employee</h2>
 

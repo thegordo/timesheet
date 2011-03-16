@@ -45,7 +45,7 @@
     <script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
-    <% out.println(UtilWeb.getMenu(request));%>
+    <timeSheet:menu/>
     <timeSheet:header/>
 
     <h2>Report time worked</h2>

@@ -1,27 +1,25 @@
-package timeSheet;
+package timeSheet.tags;
 
+import timeSheet.SessionConst;
 import timeSheet.database.entity.Employee;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.TagSupport;
+import java.io.IOException;
 
 /**
  * User: John Lawrence
- * Date: 12/10/10
- * Time: 12:43 AM
+ * Date: 3/15/11
+ * Time: 9:58 PM
  */
-public class Dashboard {
-    private HttpSession session;
-
-    public Dashboard(HttpSession session) {
-        this.session = session;
-    }
-
-    public String getMenu() {
-        StringBuilder sortedMenu = new StringBuilder();
-        if (session.getAttribute(SessionConst.employee.toString()) == null) {
-            return "";
+public class DashMenuTag extends TagSupport {
+    @Override
+    public int doStartTag() throws JspException {
+        StringBuilder sortedMenu = new StringBuilder("<div id=\"content\">");
+        Employee currentEmployee = (Employee) pageContext.getSession().getAttribute(SessionConst.employee.toString());
+        if (currentEmployee == null) {
+            return SKIP_BODY;
         }
-        Employee currentEmployee = (Employee) session.getAttribute(SessionConst.employee.toString());
         switch (currentEmployee.getRole()) {
             case Administrator:
                 sortedMenu.append("<a href=\"manageGroups.jsp\">Manage Groups</a><br />");
@@ -40,14 +38,12 @@ public class Dashboard {
                     sortedMenu.insert(0, "<a href=\"timeEntering.jsp\">Enter Time</a><br />");
                 }
         }
-        return sortedMenu.toString();
-    }
-
-    public String getName() {
-        Object attribute = session.getAttribute(SessionConst.employee.toString());
-        if (attribute != null) {
-            return ((Employee) attribute).getName();
+        sortedMenu.append("</div>");
+        try {
+            pageContext.getOut().println(sortedMenu.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return "";
+        return super.doStartTag();    //To change body of overridden methods use File | Settings | File Templates.
     }
 }

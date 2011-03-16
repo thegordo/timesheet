@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-<% out.println(UtilWeb.getMenu(request));%>
+<timeSheet:menu/>
 <timeSheet:header/>
 <h2>Employee Management</h2>
 

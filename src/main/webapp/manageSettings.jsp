@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-<% out.println(UtilWeb.getMenu(request));%>
+<timeSheet:menu/>
 <timeSheet:header/>
 <h2>System Settings Management</h2>
 <div class="login">

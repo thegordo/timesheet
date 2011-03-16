@@ -27,6 +27,16 @@
         <tag-class>timeSheet.tags.HeaderTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+    <tag>
+        <name>menu</name>
+        <tag-class>timeSheet.tags.MenuTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>dashMenu</name>
+        <tag-class>timeSheet.tags.DashMenuTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
 
 
     <!-- Invoke 'Generate' action to add tags or functions -->

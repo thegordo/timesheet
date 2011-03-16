@@ -35,7 +35,7 @@
     <script type="text/javascript" src="calendar_db.js"></script>
 </head>
 <body>
-<% out.println(UtilWeb.getMenu(request));%>
+<timeSheet:menu />
 <timeSheet:header/>
 <h2><%=title%></h2>
 
