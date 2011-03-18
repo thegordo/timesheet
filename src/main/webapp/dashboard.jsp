@@ -16,8 +16,7 @@
 </head>
 <body>
 <timeSheet:menu />
-<timeSheet:header />
-<h2>Dashboard - <%=UtilWeb.getSessionEmployee(session).getName()%></h2>
+<timeSheet:header sub='<%="Dashboard - " + UtilWeb.getSessionEmployee(session).getName()%>'/>
 <timeSheet:dashMenu />
 <timeSheet:footer />
 </body>

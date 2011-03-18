@@ -28,8 +28,7 @@
 </head>
 <body>
 <timeSheet:menu/>
-<timeSheet:header/>
-<h2>System Settings Management</h2>
+<timeSheet:header sub="System Settings Management"/>
 <div class="login">
     <form action="manageSettings.jsp" method="post">
         <h4>Company Settings</h4>

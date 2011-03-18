@@ -22,7 +22,7 @@
 </head>
 <body>
     <timeSheet:menu/>
-    <timeSheet:header/>
+    <timeSheet:header sub="User Management"/>
 
     <h2>User Management</h2>
 

@@ -36,9 +36,7 @@
 </head>
 <body>
 <timeSheet:menu />
-<timeSheet:header/>
-<h2><%=title%></h2>
-
+<timeSheet:header sub="<%=title%>"/>
     <form action="library/saveEmployee.jsp" method="post" name="employee">
         <div class="login">
             <label for="name">Name:</label>

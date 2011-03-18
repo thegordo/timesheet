@@ -26,6 +26,11 @@
         <name>header</name>
         <tag-class>timeSheet.tags.HeaderTag</tag-class>
         <body-content>empty</body-content>
+        <attribute>
+            <name>sub</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
     <tag>
         <name>menu</name>

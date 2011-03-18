@@ -35,8 +35,7 @@
     }
 %>
 <timeSheet:menu/>
-<timeSheet:header/>
-<h2>Manage time worked for employee</h2>
+<timeSheet:header sub="Manage time worked for employee"/>
 
 <div class="login">
     <form name="inputTime" action="library/saveTime.jsp" method="post">

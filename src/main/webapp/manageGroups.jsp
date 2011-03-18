@@ -20,8 +20,7 @@
 </head>
 <body>
 <timeSheet:menu/>
-<timeSheet:header/>
-<h2>Group Management</h2>
+<timeSheet:header sub="Group Management"/>
 
 <div>
     <table class="install">

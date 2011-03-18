@@ -29,8 +29,7 @@
 </head>
 <body>
 <timeSheet:menu/>
-<timeSheet:header/>
-<h2><%=title%></h2>
+<timeSheet:header sub="<%=title%>"/>
 
 <div class="login">
     <form action="library/saveHourType.jsp" method="post" name="hourType">

@@ -46,9 +46,7 @@
 </head>
 <body>
     <timeSheet:menu/>
-    <timeSheet:header/>
-
-    <h2>Report time worked</h2>
+    <timeSheet:header sub="Report Time Worked"/>
     <%
         int sessionId = ((Employee) session.getAttribute(SessionConst.employee.name())).getId();
         if(employee.getId() == sessionId) {%>

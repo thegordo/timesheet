@@ -30,8 +30,7 @@
 </head>
 <body>
 <timeSheet:menu/>
-<timeSheet:header/>
-<h2><%=title%></h2>
+<timeSheet:header sub="<%=title%>"/>
 
 <form action="library/saveGroup.jsp" method="post" name="employee">
     <div class="login">
