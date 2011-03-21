@@ -15,7 +15,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% if (UtilWeb.checkSession(session, out, false, true)) return; %>
+    <% if (UtilWeb.checkSession(out, request, true)) return; %>
     <% EmployeeManager employeeManager = new EmployeeManager(); %>
     <%
         String empID = request.getParameter(Employee.Field.id.toString());

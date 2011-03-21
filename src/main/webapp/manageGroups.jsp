@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% if (UtilWeb.checkSession(session, out, false, true)) return; %>
+    <% if (UtilWeb.checkSession(out, request, true)) return; %>
     <% GroupManager groupManager = new GroupManager(); %>
     <title>PaySystem - Manage Groups</title>
     <style type="text/css">

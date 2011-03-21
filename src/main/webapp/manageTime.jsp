@@ -16,7 +16,7 @@
     <%
         HourTypeManager hourTypeManager = new HourTypeManager();
         EmployeeManager employeeManager = new EmployeeManager();
-    %><% if (UtilWeb.checkSession(session, out, false, false)) return; %>
+    %><% if (UtilWeb.checkSession(out, request, false)) return; %>
     <title>PaySystem - Manage Employee Time</title>
     <style type="text/css">
         @import url('display.css');

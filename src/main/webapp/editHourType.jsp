@@ -11,7 +11,7 @@
 <html>
 <head>
     <%
-        if (UtilWeb.checkSession(session, out, false, true)) return;
+        if (UtilWeb.checkSession(out, request, true)) return;
         HourTypeManager groupManager = new HourTypeManager();
 
         String hourTypeId = request.getParameter(HourType.Field.id.toString());

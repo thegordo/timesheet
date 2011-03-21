@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% if (UtilWeb.checkSession(session, out, false, true)) return; %>
+    <% if (UtilWeb.checkSession(out, request, true)) return; %>
     <% HourTypeManager groupManager = new HourTypeManager(); %>
     <title>PaySystem - Manage Hour Types</title>
     <style type="text/css">

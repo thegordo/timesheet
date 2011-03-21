@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% if (UtilWeb.checkSession(session, out, false, false)) return; %>
+    <% if (UtilWeb.checkSession(out, request, false)) return; %>
     <title>PaySystem - Dashboard</title>
     <style type="text/css">
         @import url('display.css');

@@ -22,7 +22,7 @@
 <html>
     <head>
         <% UtilWeb.checkInstall(out); %>
-        <% if (UtilWeb.checkSession(session, out, true, false)) return; %>
+        <% if (UtilWeb.checkSession(out, request, false)) return; %>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<style type="text/css">
 			@import url('display.css');

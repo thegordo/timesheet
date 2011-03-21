@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% if (UtilWeb.checkSession(session, out, false, false)) return; %>
+    <% if (UtilWeb.checkSession(out, request, false)) return; %>
     <%
         Employee employee = (Employee) session.getAttribute(SessionConst.employee.name());
     %>

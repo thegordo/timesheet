@@ -3,9 +3,10 @@ package timeSheet;
 import timeSheet.database.entity.Employee;
 import timeSheet.database.manager.DatabaseManager;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
+import javax.servlet.http.HttpSessionAttributeListener;
+import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -17,11 +18,13 @@ import java.util.Map;
  * Date: 12/8/10
  * Time: 11:42 PM
  */
-public class UtilWeb implements HttpSessionListener {
+public class UtilWeb implements HttpSessionAttributeListener {
     private static SimpleDateFormat simpleDateFormat;
     private static Map<String, Employee> employeeMap = new HashMap<String, Employee>();
 
-    public static boolean checkSession(HttpSession session, JspWriter out, boolean isIndex, boolean isAdmin) {
+    public static boolean checkSession(JspWriter out, HttpServletRequest request, boolean isAdmin) {
+        boolean isIndex = request.getRequestURI().contains("index.jsp");
+        HttpSession session = request.getSession();
         Employee employee = employeeMap.get(session.getId());
         if (employee == null && !isIndex) { // Check to see if the session has expired.
             try {
@@ -48,17 +51,6 @@ public class UtilWeb implements HttpSessionListener {
         return false;
     }
 
-    @Override
-    public void sessionCreated(HttpSessionEvent httpSessionEvent) {
-        HttpSession session = httpSessionEvent.getSession();
-        employeeMap.put(session.getId(), (Employee) httpSessionEvent.getSession().getAttribute(SessionConst.employee.toString()));
-    }
-
-    @Override
-    public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        employeeMap.remove(httpSessionEvent.getSession().getId());
-    }
-
     public static void checkInstall(JspWriter out) {
         DatabaseManager manager = new DatabaseManager();
         if (!manager.testConnection()) {
@@ -79,5 +71,26 @@ public class UtilWeb implements HttpSessionListener {
 
     public static Employee getSessionEmployee(HttpSession session) {
         return employeeMap.get(session.getId());
+    }
+
+    @Override
+    public void attributeAdded(HttpSessionBindingEvent httpSessionBindingEvent) {
+        setupSession(httpSessionBindingEvent);
+    }
+
+    @Override
+    public void attributeRemoved(HttpSessionBindingEvent httpSessionBindingEvent) {
+        setupSession(httpSessionBindingEvent);
+    }
+
+    @Override
+    public void attributeReplaced(HttpSessionBindingEvent httpSessionBindingEvent) {
+        setupSession(httpSessionBindingEvent);
+    }
+
+    private void setupSession(HttpSessionBindingEvent httpSessionBindingEvent) {
+        HttpSession session = httpSessionBindingEvent.getSession();
+        Employee employee = (Employee) session.getAttribute(SessionConst.employee.toString());
+        employeeMap.put(session.getId(), employee);
     }
 }
