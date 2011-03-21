@@ -20,7 +20,7 @@
 %>
 <html>
 <head>
-    <% UtilWeb.checkSession(session, out, false, true); %>
+    <% if (UtilWeb.checkSession(session, out, false, true)) return; %>
     <title>PaySystem - Manage System Settings</title>
     <style type="text/css">
         @import url('display.css');

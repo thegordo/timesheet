@@ -5,4 +5,7 @@
    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	<display-name>PaySystem</display-name>
 	<description>A way of tracking pay for employees.</description>
+    <listener>
+        <listener-class>timeSheet.UtilWeb</listener-class>
+    </listener>
 </web-app>

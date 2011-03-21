@@ -11,7 +11,7 @@
 <html>
 <head>
     <%
-        UtilWeb.checkSession(session, out, false, true);
+        if (UtilWeb.checkSession(session, out, false, true)) return;
         GroupManager groupManager = new GroupManager();
 
         String groupID = request.getParameter(EmployeeGroup.Field.id.toString());

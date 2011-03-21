@@ -42,9 +42,4 @@
         <tag-class>timeSheet.tags.DashMenuTag</tag-class>
         <body-content>empty</body-content>
     </tag>
-
-
-    <!-- Invoke 'Generate' action to add tags or functions -->
-
-
 </taglib>

@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-UtilWeb.checkSession(session, out, false, false);
+    if (UtilWeb.checkSession(session, out, false, false)) return;
 HoursManager hourManager = new HoursManager();
 hourManager.removeByID(Integer.parseInt(request.getParameter("id")));
 %>

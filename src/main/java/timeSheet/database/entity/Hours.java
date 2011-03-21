@@ -118,4 +118,16 @@ public class Hours extends BaseObject {
     public boolean isEnteredByEmployee() {
         return employee != null && enteredByEmployee != null && employee.equals(enteredByEmployee);
     }
+
+    public void validate() {
+        if (employee == null) {
+            throw new IllegalArgumentException("Employee cannot be null.");
+        }
+        if (enteredByEmployee == null) {
+            throw new IllegalArgumentException("Entered by Employee cannot be null.");
+        }
+        if (hours == null || hours == 0) {
+            throw new IllegalArgumentException("Cannot save hours with no hours to save.");
+        }
+    }
 }

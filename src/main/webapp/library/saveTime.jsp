@@ -20,7 +20,12 @@
     hoursWorked.setDateEntered(new Date());
     hoursWorked.setEmployeeApproval(true);
     hoursWorked.setManagerApproval(false);
-    double hours = Double.parseDouble(request.getParameter("hours"));
+    double hours;
+    try {
+        hours = Double.parseDouble(request.getParameter("hours"));
+    } catch(NumberFormatException e) {
+        hours = 0.0;
+    }
     hoursWorked.setHours(hours);
     String day = request.getParameter("date");
     if(day != null) {
@@ -59,18 +64,19 @@
         hoursWorked.setType(man.getDefaultType());
     }
     HoursManager manager = new HoursManager();
-    try {
-        manager.saveHours(hoursWorked);
 %>
 <html>
 <body>
 <script type="text/javascript">
-    <%
+<%
+    try {
+        hoursWorked.validate();
+        manager.saveHours(hoursWorked);
         out.print("alert('Successfully submitted the hours.');");
     } catch (Exception e) {
-        out.print("alert('Unable to save the hours.');");
+        out.print("alert('Unable to save the hours. Reason: " + e.getMessage() + "');");
     }
-    %>
+%>
     window.location.replace("../<%=request.getParameter("location")%>?empID=<%=employee.getId()%>");
 </script>
 <a href="../dashboard.jsp">Go back to the Dashboard here.</a>

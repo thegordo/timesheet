@@ -44,6 +44,6 @@ public class DashMenuTag extends TagSupport {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return super.doStartTag();    //To change body of overridden methods use File | Settings | File Templates.
+        return SKIP_BODY;
     }
 }
