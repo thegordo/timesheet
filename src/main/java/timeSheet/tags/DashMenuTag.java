@@ -27,7 +27,7 @@ public class DashMenuTag extends TagSupport {
                 sortedMenu.append("<a href=\"manageSettings.jsp\">Manage Settings</a><br />");
                 sortedMenu.append("<a href=\"manageHourTypes.jsp\">Manage Hour Types</a><br />");
             case Executive:
-                sortedMenu.append("<a href=\"reports/reports.jsp\">Reports</a><br />");
+                sortedMenu.append("<a href=\"reports.jsp\">Reports</a><br />");
             case Manager:
             case AssistantManager:
             case TimeSheetApproval:

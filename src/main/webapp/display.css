@@ -161,9 +161,9 @@ td {
 }
 
 td.hourTable {
-    border: 1px solid black;
+    border: 0;
     width: 100px;
-    height: 50px;
+    height: 25px;
     vertical-align: text-top;
 }
 

@@ -42,4 +42,9 @@
         <tag-class>timeSheet.tags.DashMenuTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+    <tag>
+        <name>adp</name>
+        <tag-class>timeSheet.tags.ADPTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
 </taglib>
