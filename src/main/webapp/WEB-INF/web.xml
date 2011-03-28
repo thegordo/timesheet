@@ -8,4 +8,7 @@
     <listener>
         <listener-class>timeSheet.UtilWeb</listener-class>
     </listener>
+    <listener>
+        <listener-class>timeSheet.EnvironmentSetup</listener-class>
+    </listener>
 </web-app>
