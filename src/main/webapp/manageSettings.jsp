@@ -36,6 +36,9 @@
         <label for="companyName">Company Name:</label>
         <input class="field" type="text" id="companyName" name="<%=PropertyName.COMPANY_NAME.getName()%>" value="<%=manager.getCompanyName()%>">
         <br/>
+        <label for="companyCode">Company Code:</label>
+        <input class="field" type="text" id="companyCode" name="<%=PropertyName.COMPANY_CODE.getName()%>" value="<%=manager.getCompanyCode()%>">
+        <br/>
         <h4>Login Settings</h4>
         <br/>
         <label for="loginType">Login Type:</label>

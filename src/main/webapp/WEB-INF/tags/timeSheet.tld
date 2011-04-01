@@ -47,4 +47,14 @@
         <tag-class>timeSheet.tags.ADPTag</tag-class>
         <body-content>empty</body-content>
     </tag>
+    <tag>
+        <name>adpReport</name>
+        <tag-class>timeSheet.tags.ADPReportTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <name>favicon</name>
+        <tag-class>timeSheet.tags.FaviconTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
 </taglib>

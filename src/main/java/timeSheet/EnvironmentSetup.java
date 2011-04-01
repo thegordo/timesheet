@@ -23,8 +23,7 @@ public class EnvironmentSetup implements ServletContextListener {
             Server.createTcpServer().start();
             logger.info("H2 server started.");
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage(), e);
-            System.exit(300);
+            logger.log(Level.SEVERE, "H2 already running.", e);
         }
     }
 

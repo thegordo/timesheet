@@ -28,6 +28,7 @@
 			@import url('display.css');
 		</style>
 		<title>PaySystem</title>
+        <timeSheet:favicon />
 	</head>
 	<body>
 		<timeSheet:header />

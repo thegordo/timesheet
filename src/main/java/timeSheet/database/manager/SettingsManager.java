@@ -52,10 +52,17 @@ public class SettingsManager {
         return (companyName != null) ? companyName : "";
     }
 
+    public String getCompanyCode() {
+        String companyCode = PaySystemProperties.getProperty(PropertyName.COMPANY_CODE);
+        return (companyCode != null) ? companyCode : "";
+    }
+
     public void saveParameters(Map<String, String[]> parameterMap) {
         if (parameterMap.isEmpty()) {
             return;
         }
+
+        PaySystemProperties.setProperty(PropertyName.COMPANY_CODE, parameterMap.get(PropertyName.COMPANY_CODE.getName())[0]);
 
         LoginType loginType = LoginType.valueOf(parameterMap.get(PropertyName.LOGIN_TYPE.getName())[0]);
         PaySystemProperties.setProperty(PropertyName.LOGIN_TYPE, loginType.toString());
