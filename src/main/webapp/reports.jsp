@@ -20,12 +20,20 @@
 <% if (request.getParameter("adp") == null) { %>
 <timeSheet:header sub="Reports"/>
 <div class="login">
-    <a href="reports.jsp?adp=true">ADP Report</a>
+    <h3>ADP Report</h3>
+    <form action="<%=request.getRequestURI()%>" method="post">
+        <label for="1" >Batch ID:</label> <input class="field" type="text" name="batchId" id="1"><br />
+        <label for="2" >Batch Description:</label> <input class="field" type="text" name="batchDescription" id="2"><br/>
+        <input type="hidden" value="true" name="adp" />
+        <input class="submit" type="submit" value="Next">
+    </form>
 </div>
 <% } else { %>
 <timeSheet:header sub="ADP Report Entry"/>
 <form method="post" action="reports/adpImport.jsp">
     <timeSheet:adp />
+    <input type="hidden" value="<%=request.getParameter("batchId")%>" name="batchId" />
+    <input type="hidden" value="<%=request.getParameter("batchDescription")%>" name="batchDescription" />
     <input type="submit" value="Finalize Data" style="float:none;">
 </form>
 <% } %>

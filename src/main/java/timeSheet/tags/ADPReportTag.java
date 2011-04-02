@@ -34,9 +34,9 @@ public class ADPReportTag extends TagSupport {
                 String key = employee.getId() + "Hours";
                 if (parameters.get(key) != null) {
                     line.append(companyCode).append(",");
-                    line.append("batch,");
+                    line.append(parameters.get("batchId")[0]).append(",");
                     line.append(employee.getFileNumber()).append(",");
-                    line.append("batch description,");
+                    line.append(parameters.get("batchDescription")[0]).append(",");
                     line.append(employee.getName()).append(",");
                     line.append(parameters.get(key)[0]).append(",");
                     key = employee.getId() + "Commission";
