@@ -1,8 +1,7 @@
 Things left todo:
 
--Create Reports page.
 -Create ADP Report/Export
--Create Other reports
+    - Fix the remaining Things with the ADP Report
 -Change DB Structure to allow for multiple groups per employee.
 
 Things to fix:
