@@ -18,14 +18,7 @@
         EmployeeManager employeeManager = new EmployeeManager();
     %><% if (UtilWeb.checkSession(out, request, false)) return; %>
     <title>PaySystem - Manage Employee Time</title>
-    <style type="text/css">
-        @import url('display.css');
-        @import url('calendar.css');
-    </style>
-    <script type="text/javascript" src="scripts.js"></script>
-    <script type="text/javascript" src="calendar_db.js"></script>
-
-    <timeSheet:favicon/>
+    <timeSheet:headDefault displayCalendar="true"/>
 </head>
 <body onload="getCalendarForEmployee();">
 <%

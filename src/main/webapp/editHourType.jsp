@@ -22,11 +22,7 @@
         String title = hourType != null ? "Edit Hour Type" : "Add Hour Type";
     %>
     <title>PaySystem - <%=title%></title>
-    <style type="text/css">
-        @import url("display.css");
-    </style>
-    <script type="text/javascript" src="scripts.js"></script>
-    <timeSheet:favicon/>
+    <timeSheet:headDefault displayCalendar="false"/>
 </head>
 <body>
 <timeSheet:menu/>

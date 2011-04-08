@@ -14,11 +14,7 @@
     <% if (UtilWeb.checkSession(out, request, true)) return; %>
     <% GroupManager groupManager = new GroupManager(); %>
     <title>PaySystem - Manage Groups</title>
-    <style type="text/css">
-        @import url('display.css');
-    </style>
-
-    <timeSheet:favicon/>
+    <timeSheet:headDefault displayCalendar="false"/>
 </head>
 <body>
 <timeSheet:menu/>

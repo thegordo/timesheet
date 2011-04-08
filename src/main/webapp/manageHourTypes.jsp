@@ -14,11 +14,7 @@
     <% if (UtilWeb.checkSession(out, request, true)) return; %>
     <% HourTypeManager groupManager = new HourTypeManager(); %>
     <title>PaySystem - Manage Hour Types</title>
-    <style type="text/css">
-        @import url('display.css');
-    </style>
-
-    <timeSheet:favicon/>
+    <timeSheet:headDefault displayCalendar="false"/>
 </head>
 <body>
 <timeSheet:menu/>

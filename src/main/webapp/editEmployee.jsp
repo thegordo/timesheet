@@ -27,13 +27,7 @@
         String title = employee != null ? "Edit " + employee.getName() : "Add Employee";
     %>
     <title>PaySystem - <%=title%></title>
-    <style type="text/css">
-        @import url("display.css");
-        @import url("calendar.css");
-    </style>
-    <script type="text/javascript" src="scripts.js"></script>
-    <script type="text/javascript" src="calendar_db.js"></script>
-    <timeSheet:favicon/>
+    <timeSheet:headDefault displayCalendar="true" />
 </head>
 <body>
 <timeSheet:menu />

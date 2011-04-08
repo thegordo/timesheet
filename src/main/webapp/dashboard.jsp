@@ -10,10 +10,7 @@
 <head>
     <% if (UtilWeb.checkSession(out, request, false)) return; %>
     <title>PaySystem - Dashboard</title>
-    <style type="text/css">
-        @import url('display.css');
-    </style>
-    <timeSheet:favicon/>
+    <timeSheet:headDefault displayCalendar="false"/>
 </head>
 <body>
 <timeSheet:menu />

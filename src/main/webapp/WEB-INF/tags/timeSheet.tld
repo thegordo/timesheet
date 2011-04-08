@@ -53,8 +53,14 @@
         <body-content>empty</body-content>
     </tag>
     <tag>
-        <name>favicon</name>
-        <tag-class>timeSheet.tags.FaviconTag</tag-class>
+        <name>headDefault</name>
+        <tag-class>timeSheet.tags.CommonHeadTag</tag-class>
         <body-content>empty</body-content>
+        <attribute>
+            <name>displayCalendar</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.Boolean</type>
+        </attribute>
     </tag>
 </taglib>
