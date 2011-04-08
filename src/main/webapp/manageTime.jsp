@@ -24,6 +24,8 @@
     </style>
     <script type="text/javascript" src="scripts.js"></script>
     <script type="text/javascript" src="calendar_db.js"></script>
+
+    <timeSheet:favicon/>
 </head>
 <body onload="getCalendarForEmployee();">
 <%

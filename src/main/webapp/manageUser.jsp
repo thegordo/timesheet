@@ -19,12 +19,12 @@
         @import url('display.css');
     </style>
     <script type="text/javascript" src="scripts.js"></script>
+
+    <timeSheet:favicon/>
 </head>
 <body>
     <timeSheet:menu/>
     <timeSheet:header sub="User Management"/>
-
-    <h2>User Management</h2>
 
     <form action="library/saveUser.jsp" method="post" name="employee">
         <div class="login">

@@ -21,12 +21,12 @@
         }
         String title = group != null ? "Edit Group" : "Add Group";
     %>
-    <title>PaySystem - <%=title%>
-    </title>
+    <title>PaySystem - <%=title%></title>
     <style type="text/css">
         @import url("display.css");
     </style>
     <script type="text/javascript" src="scripts.js"></script>
+    <timeSheet:favicon/>
 </head>
 <body>
 <timeSheet:menu/>

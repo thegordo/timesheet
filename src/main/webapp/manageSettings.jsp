@@ -25,6 +25,8 @@
     <style type="text/css">
         @import url('display.css');
     </style>
+
+    <timeSheet:favicon/>
 </head>
 <body>
 <timeSheet:menu/>
